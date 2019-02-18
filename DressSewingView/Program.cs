@@ -29,8 +29,8 @@ namespace DressSewingView
         {
             var currentContainer = new UnityContainer();
             currentContainer.RegisterType<IClientService, ClientServiceList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IComponentService, ComponentServiceList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IProductService, ProductServiceList>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IMaterialService, MaterialServiceList>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IDressService, DressServiceList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IMainService, MainServiceList>(new HierarchicalLifetimeManager());
             return currentContainer;
         }

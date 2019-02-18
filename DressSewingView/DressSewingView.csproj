@@ -108,37 +108,43 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProduct.cs">
+    <Compile Include="FormDress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProduct.Designer.cs">
-      <DependentUpon>FormProduct.cs</DependentUpon>
+    <Compile Include="FormDress.Designer.cs">
+      <DependentUpon>FormDress.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormProductComponent.cs">
+    <Compile Include="FormDressMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormProductComponent.Designer.cs">
-      <DependentUpon>FormProductComponent.cs</DependentUpon>
+    <Compile Include="FormDressMaterial.Designer.cs">
+      <DependentUpon>FormDressMaterial.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormClients.resx">
       <DependentUpon>FormClients.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateOrder.resx">
       <DependentUpon>FormCreateOrder.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProduct.resx">
-      <DependentUpon>FormProduct.cs</DependentUpon>
+    <EmbeddedResource Include="FormDress.resx">
+      <DependentUpon>FormDress.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormProductComponent.resx">
-      <DependentUpon>FormProductComponent.cs</DependentUpon>
+    <EmbeddedResource Include="FormDressMaterial.resx">
+      <DependentUpon>FormDressMaterial.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -43,10 +43,10 @@
   <ItemGroup>
     <Compile Include="DataListSingleton.cs" />
     <Compile Include="Implemetations\ClientServiceList.cs" />
-    <Compile Include="Implemetations\ComponentServiceList.cs" />
+    <Compile Include="Implemetations\MaterialServiceList.cs" />
     <Compile Include="Implemetations\MainServiceList.cs" />
-    <Compile Include="Implemetations\ProductComponentServiceList.cs" />
-    <Compile Include="Implemetations\ProductServiceList.cs" />
+    <Compile Include="Implemetations\DressMaterialServiceList.cs" />
+    <Compile Include="Implemetations\DressServiceList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

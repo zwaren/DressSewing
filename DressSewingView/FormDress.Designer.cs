@@ -1,6 +1,6 @@
 ﻿namespace DressSewingView
 {
-    partial class FormProduct
+    partial class FormDress
     {
         /// <summary>
         /// Required designer variable.
@@ -34,22 +34,21 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.dataGridView = new System.Windows.Forms.DataGridView();
+			this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dressViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.buttonRef = new System.Windows.Forms.Button();
+			this.buttonDel = new System.Windows.Forms.Button();
+			this.buttonUpd = new System.Windows.Forms.Button();
+			this.buttonAdd = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.buttonSave = new System.Windows.Forms.Button();
-			this.buttonAdd = new System.Windows.Forms.Button();
-			this.buttonUpd = new System.Windows.Forms.Button();
-			this.buttonDel = new System.Windows.Forms.Button();
-			this.buttonRef = new System.Windows.Forms.Button();
-			this.dataGridView = new System.Windows.Forms.DataGridView();
-			this.productBindingModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.productViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.dressBindingModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.productBindingModelBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.productViewModelBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dressViewModelBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dressBindingModelBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// textBoxName
@@ -98,6 +97,75 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Компоненты";
 			// 
+			// dataGridView
+			// 
+			this.dataGridView.AutoGenerateColumns = false;
+			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn});
+			this.dataGridView.DataSource = this.dressViewModelBindingSource;
+			this.dataGridView.Location = new System.Drawing.Point(7, 20);
+			this.dataGridView.Name = "dataGridView";
+			this.dataGridView.Size = new System.Drawing.Size(470, 295);
+			this.dataGridView.TabIndex = 4;
+			// 
+			// idDataGridViewTextBoxColumn
+			// 
+			this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+			this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+			this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+			// 
+			// priceDataGridViewTextBoxColumn
+			// 
+			this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+			this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+			this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+			// 
+			// dressViewModelBindingSource
+			// 
+			this.dressViewModelBindingSource.DataSource = typeof(DressSewingServiceDAL.ViewModels.DressViewModel);
+			// 
+			// buttonRef
+			// 
+			this.buttonRef.Location = new System.Drawing.Point(483, 195);
+			this.buttonRef.Name = "buttonRef";
+			this.buttonRef.Size = new System.Drawing.Size(75, 23);
+			this.buttonRef.TabIndex = 3;
+			this.buttonRef.Text = "Обновить";
+			this.buttonRef.UseVisualStyleBackColor = true;
+			this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
+			// 
+			// buttonDel
+			// 
+			this.buttonDel.Location = new System.Drawing.Point(483, 141);
+			this.buttonDel.Name = "buttonDel";
+			this.buttonDel.Size = new System.Drawing.Size(75, 23);
+			this.buttonDel.TabIndex = 2;
+			this.buttonDel.Text = "Удалить";
+			this.buttonDel.UseVisualStyleBackColor = true;
+			this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
+			// 
+			// buttonUpd
+			// 
+			this.buttonUpd.Location = new System.Drawing.Point(483, 89);
+			this.buttonUpd.Name = "buttonUpd";
+			this.buttonUpd.Size = new System.Drawing.Size(75, 23);
+			this.buttonUpd.TabIndex = 1;
+			this.buttonUpd.Text = "Изменить";
+			this.buttonUpd.UseVisualStyleBackColor = true;
+			this.buttonUpd.Click += new System.EventHandler(this.buttonUpd_Click);
+			// 
+			// buttonAdd
+			// 
+			this.buttonAdd.Location = new System.Drawing.Point(483, 37);
+			this.buttonAdd.Name = "buttonAdd";
+			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+			this.buttonAdd.TabIndex = 0;
+			this.buttonAdd.Text = "Добавить";
+			this.buttonAdd.UseVisualStyleBackColor = true;
+			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+			// 
 			// buttonCancel
 			// 
 			this.buttonCancel.Location = new System.Drawing.Point(478, 405);
@@ -118,87 +186,11 @@
 			this.buttonSave.UseVisualStyleBackColor = true;
 			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
 			// 
-			// buttonAdd
+			// dressBindingModelBindingSource
 			// 
-			this.buttonAdd.Location = new System.Drawing.Point(483, 37);
-			this.buttonAdd.Name = "buttonAdd";
-			this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-			this.buttonAdd.TabIndex = 0;
-			this.buttonAdd.Text = "Добавить";
-			this.buttonAdd.UseVisualStyleBackColor = true;
-			this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+			this.dressBindingModelBindingSource.DataSource = typeof(DressSewingServiceDAL.BindingModels.DressBindingModel);
 			// 
-			// buttonUpd
-			// 
-			this.buttonUpd.Location = new System.Drawing.Point(483, 89);
-			this.buttonUpd.Name = "buttonUpd";
-			this.buttonUpd.Size = new System.Drawing.Size(75, 23);
-			this.buttonUpd.TabIndex = 1;
-			this.buttonUpd.Text = "Изменить";
-			this.buttonUpd.UseVisualStyleBackColor = true;
-			this.buttonUpd.Click += new System.EventHandler(this.buttonUpd_Click);
-			// 
-			// buttonDel
-			// 
-			this.buttonDel.Location = new System.Drawing.Point(483, 141);
-			this.buttonDel.Name = "buttonDel";
-			this.buttonDel.Size = new System.Drawing.Size(75, 23);
-			this.buttonDel.TabIndex = 2;
-			this.buttonDel.Text = "Удалить";
-			this.buttonDel.UseVisualStyleBackColor = true;
-			this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
-			// 
-			// buttonRef
-			// 
-			this.buttonRef.Location = new System.Drawing.Point(483, 195);
-			this.buttonRef.Name = "buttonRef";
-			this.buttonRef.Size = new System.Drawing.Size(75, 23);
-			this.buttonRef.TabIndex = 3;
-			this.buttonRef.Text = "Обновить";
-			this.buttonRef.UseVisualStyleBackColor = true;
-			this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
-			// 
-			// dataGridView
-			// 
-			this.dataGridView.AutoGenerateColumns = false;
-			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.productNameDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn});
-			this.dataGridView.DataSource = this.productViewModelBindingSource;
-			this.dataGridView.Location = new System.Drawing.Point(7, 20);
-			this.dataGridView.Name = "dataGridView";
-			this.dataGridView.Size = new System.Drawing.Size(470, 295);
-			this.dataGridView.TabIndex = 4;
-			// 
-			// productBindingModelBindingSource
-			// 
-			this.productBindingModelBindingSource.DataSource = typeof(DressSewingServiceDAL.BindingModels.ProductBindingModel);
-			// 
-			// idDataGridViewTextBoxColumn
-			// 
-			this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-			this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-			this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-			// 
-			// productNameDataGridViewTextBoxColumn
-			// 
-			this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-			this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
-			this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-			// 
-			// priceDataGridViewTextBoxColumn
-			// 
-			this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-			this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-			this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-			// 
-			// productViewModelBindingSource
-			// 
-			this.productViewModelBindingSource.DataSource = typeof(DressSewingServiceDAL.ViewModels.ProductViewModel);
-			// 
-			// FormProduct
+			// FormDress
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -210,13 +202,13 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.textBoxPrice);
 			this.Controls.Add(this.textBoxName);
-			this.Name = "FormProduct";
-			this.Text = "FormProduct";
-			this.Load += new System.EventHandler(this.FormProduct_Load);
+			this.Name = "FormDress";
+			this.Text = "Платье";
+			this.Load += new System.EventHandler(this.FormDress_Load);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.productBindingModelBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.productViewModelBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dressViewModelBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dressBindingModelBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -237,9 +229,9 @@
 		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.DataGridView dataGridView;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dressNameDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-		private System.Windows.Forms.BindingSource productBindingModelBindingSource;
-		private System.Windows.Forms.BindingSource productViewModelBindingSource;
+		private System.Windows.Forms.BindingSource dressBindingModelBindingSource;
+		private System.Windows.Forms.BindingSource dressViewModelBindingSource;
 	}
 }

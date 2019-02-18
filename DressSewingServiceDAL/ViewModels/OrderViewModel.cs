@@ -11,8 +11,8 @@ namespace DressSewingServiceDAL.ViewModels
         public int Id { get; set; }
         public int ClientId { get; set; }
         public string ClientFIO { get; set; }
-        public int ProductId { get; set; }
-        public string ProductName { get; set; }
+        public int DressId { get; set; }
+        public string DressName { get; set; }
         public int Count { get; set; }
         public decimal Sum { get; set; }
         public string Status { get; set; }

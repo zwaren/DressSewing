@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DressSewingModel
 {
-    public class ProductComponent
+    public class DressMaterial
     {
         public int Id { get; set; }
-        public int ProductId { get; set; }
-        public int ComponentId { get; set; }
-        public string ProductComponentName { get; set; }
+        public int DressId { get; set; }
+        public int MaterialId { get; set; }
+        public string MaterialName { get; set; }
         public int Count { get; set; }
     }
 }

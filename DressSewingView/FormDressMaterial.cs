@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,38 +12,38 @@ using Unity;
 
 namespace DressSewingView
 {
-    public partial class FormProductComponent : Form
+    public partial class FormDressMaterial : Form
     {
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
 
-		public ProductComponentViewModel Model
+		public DressMaterialViewModel Model
 		{
 			set { model = value; }
 			get { return model; }
 		}
 
-		private readonly IComponentService service;
+		private readonly IMaterialService service;
 
-		private ProductComponentViewModel model;
+		private DressMaterialViewModel model;
 
-		public FormProductComponent(IComponentService service)
+		public FormDressMaterial(IMaterialService service)
 		{
 			InitializeComponent();
 			this.service = service;
 		}
 
-		private void FormProductComponent_Load(object sender, EventArgs e)
+		private void FormDressMaterial_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				List<ComponentViewModel> list = service.GetList();
+				List<MaterialViewModel> list = service.GetList();
 				if (list != null)
 				{
-					comboBoxComponent.DisplayMember = "ComponentName";
-					comboBoxComponent.ValueMember = "Id";
-					comboBoxComponent.DataSource = list;
-					comboBoxComponent.SelectedItem = null;
+					comboBoxMaterial.DisplayMember = "MaterialName";
+					comboBoxMaterial.ValueMember = "Id";
+					comboBoxMaterial.DataSource = list;
+					comboBoxMaterial.SelectedItem = null;
 				}
 			}
 			catch (Exception ex)
@@ -54,8 +53,8 @@ namespace DressSewingView
 			}
 			if (model != null)
 			{
-				comboBoxComponent.Enabled = false;
-				comboBoxComponent.SelectedValue = model.ComponentId;
+				comboBoxMaterial.Enabled = false;
+				comboBoxMaterial.SelectedValue = model.MaterialId;
 				textBoxCount.Text = model.Count.ToString();
 			}
 		}
@@ -68,7 +67,7 @@ namespace DressSewingView
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (comboBoxComponent.SelectedValue == null)
+			if (comboBoxMaterial.SelectedValue == null)
 			{
 				MessageBox.Show("Выберите компонент", "Ошибка", MessageBoxButtons.OK,
 				MessageBoxIcon.Error);
@@ -78,10 +77,10 @@ namespace DressSewingView
 			{
 				if (model == null)
 				{
-					model = new ProductComponentViewModel
+					model = new DressMaterialViewModel
 					{
-						ComponentId = Convert.ToInt32(comboBoxComponent.SelectedValue),
-						ProductComponentName = comboBoxComponent.Text,
+						MaterialId = Convert.ToInt32(comboBoxMaterial.SelectedValue),
+						MaterialName = comboBoxMaterial.Text,
 						Count = Convert.ToInt32(textBoxCount.Text)
 					};
 				}

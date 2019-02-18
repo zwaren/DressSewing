@@ -31,12 +31,12 @@ namespace DressSewingServiceImplement.Implemetations
                         break;
                     }
                 }
-                string productName = string.Empty;
-                for (int j = 0; j < source.Products.Count; ++j)
+                string DressName = string.Empty;
+                for (int j = 0; j < source.Dresses.Count; ++j)
                 {
-                    if (source.Products[j].Id == source.Orders[i].ProductId)
+                    if (source.Dresses[j].Id == source.Orders[i].DressId)
                     {
-                        productName = source.Products[j].ProductName;
+                        DressName = source.Dresses[j].DressName;
                         break;
                     }
                 }
@@ -45,8 +45,8 @@ namespace DressSewingServiceImplement.Implemetations
                     Id = source.Orders[i].Id,
                     ClientId = source.Orders[i].ClientId,
                     ClientFIO = clientFIO,
-                    ProductId = source.Orders[i].ProductId,
-                    ProductName = productName,
+                    DressId = source.Orders[i].DressId,
+                    DressName = DressName,
                     Count = source.Orders[i].Count,
                     Sum = source.Orders[i].Sum,
                     DateCreate = source.Orders[i].DateCreate.ToLongDateString(),
@@ -70,7 +70,7 @@ namespace DressSewingServiceImplement.Implemetations
             {
                 Id = maxId + 1,
                 ClientId = model.ClientId,
-                ProductId = model.ProductId,
+                DressId = model.DressId,
                 DateCreate = DateTime.Now,
                 Count = model.Count,
                 Sum = model.Sum,

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
 			this.comboBoxClient = new System.Windows.Forms.ComboBox();
-			this.comboBoxProduct = new System.Windows.Forms.ComboBox();
+			this.comboBoxDress = new System.Windows.Forms.ComboBox();
 			this.textBoxCount = new System.Windows.Forms.TextBox();
 			this.textBoxSum = new System.Windows.Forms.TextBox();
 			this.buttonCancel = new System.Windows.Forms.Button();
@@ -48,14 +48,14 @@
 			this.comboBoxClient.Size = new System.Drawing.Size(212, 21);
 			this.comboBoxClient.TabIndex = 0;
 			// 
-			// comboBoxProduct
+			// comboBoxDress
 			// 
-			this.comboBoxProduct.FormattingEnabled = true;
-			this.comboBoxProduct.Location = new System.Drawing.Point(87, 40);
-			this.comboBoxProduct.Name = "comboBoxProduct";
-			this.comboBoxProduct.Size = new System.Drawing.Size(212, 21);
-			this.comboBoxProduct.TabIndex = 1;
-			this.comboBoxProduct.SelectedIndexChanged += new System.EventHandler(this.comboBoxProduct_SelectedIndexChanged);
+			this.comboBoxDress.FormattingEnabled = true;
+			this.comboBoxDress.Location = new System.Drawing.Point(87, 40);
+			this.comboBoxDress.Name = "comboBoxDress";
+			this.comboBoxDress.Size = new System.Drawing.Size(212, 21);
+			this.comboBoxDress.TabIndex = 1;
+			this.comboBoxDress.SelectedIndexChanged += new System.EventHandler(this.comboBoxDress_SelectedIndexChanged);
 			// 
 			// textBoxCount
 			// 
@@ -142,10 +142,10 @@
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.textBoxSum);
 			this.Controls.Add(this.textBoxCount);
-			this.Controls.Add(this.comboBoxProduct);
+			this.Controls.Add(this.comboBoxDress);
 			this.Controls.Add(this.comboBoxClient);
 			this.Name = "FormCreateOrder";
-			this.Text = "FormCreateOrder";
+			this.Text = "Заказы";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -154,7 +154,7 @@
 		#endregion
 
 		private System.Windows.Forms.ComboBox comboBoxClient;
-		private System.Windows.Forms.ComboBox comboBoxProduct;
+		private System.Windows.Forms.ComboBox comboBoxDress;
 		private System.Windows.Forms.TextBox textBoxCount;
 		private System.Windows.Forms.TextBox textBoxSum;
 		private System.Windows.Forms.Button buttonCancel;

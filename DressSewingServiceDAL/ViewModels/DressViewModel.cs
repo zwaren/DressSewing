@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceDAL.ViewModels
 {
-    public class ComponentViewModel
+    public class DressViewModel
     {
         public int Id { get; set; }
-        public string ComponentName { get; set; }
+        public string DressName { get; set; }
+        public decimal Price { get; set; }
+        public List<DressMaterialViewModel> DressMaterials { get; set; }
     }
 }

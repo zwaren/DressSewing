@@ -38,13 +38,13 @@ namespace DressSewingView
 
 		private void компонентыToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormProductComponent>();
+			var form = Container.Resolve<FormDressMaterial>();
 			form.ShowDialog();
 		}
 
 		private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormProduct>();
+			var form = Container.Resolve<FormDress>();
 			form.ShowDialog();
 		}
 

@@ -38,21 +38,27 @@
 			this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clientIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.clientFIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.productIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dressIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.dressNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dateCreateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dateImplementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.orderViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.orderViewModelBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
 			this.buttonCreateOrder = new System.Windows.Forms.Button();
 			this.buttonTakeOrderInWork = new System.Windows.Forms.Button();
 			this.buttonOrderReady = new System.Windows.Forms.Button();
 			this.buttonPayOrder = new System.Windows.Forms.Button();
 			this.buttonRef = new System.Windows.Forms.Button();
+			this.orderViewModelBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+			this.orderViewModelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+			this.orderViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -105,14 +111,14 @@
             this.idDataGridViewTextBoxColumn,
             this.clientIdDataGridViewTextBoxColumn,
             this.clientFIODataGridViewTextBoxColumn,
-            this.productIdDataGridViewTextBoxColumn,
-            this.productNameDataGridViewTextBoxColumn,
+            this.dressIdDataGridViewTextBoxColumn,
+            this.dressNameDataGridViewTextBoxColumn,
             this.countDataGridViewTextBoxColumn,
             this.sumDataGridViewTextBoxColumn,
             this.statusDataGridViewTextBoxColumn,
             this.dateCreateDataGridViewTextBoxColumn,
             this.dateImplementDataGridViewTextBoxColumn});
-			this.dataGridView.DataSource = this.orderViewModelBindingSource;
+			this.dataGridView.DataSource = this.orderViewModelBindingSource3;
 			this.dataGridView.Location = new System.Drawing.Point(12, 28);
 			this.dataGridView.Name = "dataGridView";
 			this.dataGridView.Size = new System.Drawing.Size(566, 256);
@@ -136,17 +142,17 @@
 			this.clientFIODataGridViewTextBoxColumn.HeaderText = "ClientFIO";
 			this.clientFIODataGridViewTextBoxColumn.Name = "clientFIODataGridViewTextBoxColumn";
 			// 
-			// productIdDataGridViewTextBoxColumn
+			// dressIdDataGridViewTextBoxColumn
 			// 
-			this.productIdDataGridViewTextBoxColumn.DataPropertyName = "ProductId";
-			this.productIdDataGridViewTextBoxColumn.HeaderText = "ProductId";
-			this.productIdDataGridViewTextBoxColumn.Name = "productIdDataGridViewTextBoxColumn";
+			this.dressIdDataGridViewTextBoxColumn.DataPropertyName = "DressId";
+			this.dressIdDataGridViewTextBoxColumn.HeaderText = "DressId";
+			this.dressIdDataGridViewTextBoxColumn.Name = "dressIdDataGridViewTextBoxColumn";
 			// 
-			// productNameDataGridViewTextBoxColumn
+			// dressNameDataGridViewTextBoxColumn
 			// 
-			this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-			this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
-			this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+			this.dressNameDataGridViewTextBoxColumn.DataPropertyName = "DressName";
+			this.dressNameDataGridViewTextBoxColumn.HeaderText = "DressName";
+			this.dressNameDataGridViewTextBoxColumn.Name = "dressNameDataGridViewTextBoxColumn";
 			// 
 			// countDataGridViewTextBoxColumn
 			// 
@@ -178,9 +184,9 @@
 			this.dateImplementDataGridViewTextBoxColumn.HeaderText = "DateImplement";
 			this.dateImplementDataGridViewTextBoxColumn.Name = "dateImplementDataGridViewTextBoxColumn";
 			// 
-			// orderViewModelBindingSource
+			// orderViewModelBindingSource3
 			// 
-			this.orderViewModelBindingSource.DataSource = typeof(DressSewingServiceDAL.ViewModels.OrderViewModel);
+			this.orderViewModelBindingSource3.DataSource = typeof(DressSewingServiceDAL.ViewModels.OrderViewModel);
 			// 
 			// buttonCreateOrder
 			// 
@@ -232,6 +238,18 @@
 			this.buttonRef.UseVisualStyleBackColor = true;
 			this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
 			// 
+			// orderViewModelBindingSource2
+			// 
+			this.orderViewModelBindingSource2.DataSource = typeof(DressSewingServiceDAL.ViewModels.OrderViewModel);
+			// 
+			// orderViewModelBindingSource1
+			// 
+			this.orderViewModelBindingSource1.DataSource = typeof(DressSewingServiceDAL.ViewModels.OrderViewModel);
+			// 
+			// orderViewModelBindingSource
+			// 
+			this.orderViewModelBindingSource.DataSource = typeof(DressSewingServiceDAL.ViewModels.OrderViewModel);
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,10 +264,13 @@
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FormMain";
-			this.Text = "FormMain";
+			this.Text = "Пошив платьев";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.orderViewModelBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -269,16 +290,19 @@
 		private System.Windows.Forms.Button buttonOrderReady;
 		private System.Windows.Forms.Button buttonPayOrder;
 		private System.Windows.Forms.Button buttonRef;
+		private System.Windows.Forms.BindingSource orderViewModelBindingSource;
+		private System.Windows.Forms.BindingSource orderViewModelBindingSource1;
+		private System.Windows.Forms.BindingSource orderViewModelBindingSource2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clientIdDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn clientFIODataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dressIdDataGridViewTextBoxColumn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn dressNameDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dateCreateDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dateImplementDataGridViewTextBoxColumn;
-		private System.Windows.Forms.BindingSource orderViewModelBindingSource;
+		private System.Windows.Forms.BindingSource orderViewModelBindingSource3;
 	}
 }

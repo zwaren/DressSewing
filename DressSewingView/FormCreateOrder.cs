@@ -21,11 +21,11 @@ namespace DressSewingView
 
 		private readonly IClientService serviceC;
 
-		private readonly IProductService serviceP;
+		private readonly IDressService serviceP;
 
 		private readonly IMainService serviceM;
 
-		public FormCreateOrder(IClientService serviceC, IProductService serviceP, IMainService serviceM)
+		public FormCreateOrder(IClientService serviceC, IDressService serviceP, IMainService serviceM)
 		{
 			InitializeComponent();
 			this.serviceC = serviceC;
@@ -45,13 +45,13 @@ namespace DressSewingView
 					comboBoxClient.DataSource = listC;
 					comboBoxClient.SelectedItem = null;
 				}
-				List<ProductViewModel> listP = serviceP.GetList();
+				List<DressViewModel> listP = serviceP.GetList();
 				if (listP != null)
 				{
-					comboBoxProduct.DisplayMember = "ProductName";
-					comboBoxProduct.ValueMember = "Id";
-					comboBoxProduct.DataSource = listP;
-					comboBoxProduct.SelectedItem = null;
+					comboBoxDress.DisplayMember = "DressName";
+					comboBoxDress.ValueMember = "Id";
+					comboBoxDress.DataSource = listP;
+					comboBoxDress.SelectedItem = null;
 				}
 			}
 			catch (Exception ex)
@@ -63,15 +63,15 @@ namespace DressSewingView
 
 		private void CalcSum()
 		{
-			if (comboBoxProduct.SelectedValue != null &&
+			if (comboBoxDress.SelectedValue != null &&
 			!string.IsNullOrEmpty(textBoxCount.Text))
 			{
 				try
 				{
-					int id = Convert.ToInt32(comboBoxProduct.SelectedValue);
-					ProductViewModel product = serviceP.GetElement(id);
+					int id = Convert.ToInt32(comboBoxDress.SelectedValue);
+					DressViewModel Dress = serviceP.GetElement(id);
 					int count = Convert.ToInt32(textBoxCount.Text);
-					textBoxSum.Text = (count * product.Price).ToString();
+					textBoxSum.Text = (count * Dress.Price).ToString();
 				}
 				catch (Exception ex)
 				{
@@ -86,7 +86,7 @@ namespace DressSewingView
 			CalcSum();
 		}
 
-		private void comboBoxProduct_SelectedIndexChanged(object sender, EventArgs e)
+		private void comboBoxDress_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			CalcSum();
 		}
@@ -105,7 +105,7 @@ namespace DressSewingView
 				MessageBoxIcon.Error);
 				return;
 			}
-			if (comboBoxProduct.SelectedValue == null)
+			if (comboBoxDress.SelectedValue == null)
 			{
 				MessageBox.Show("Выберите изделие", "Ошибка", MessageBoxButtons.OK,
 				MessageBoxIcon.Error);
@@ -116,7 +116,7 @@ namespace DressSewingView
 				serviceM.CreateOrder(new OrderBindingModel
 				{
 					ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
-					ProductId = Convert.ToInt32(comboBoxProduct.SelectedValue),
+					DressId = Convert.ToInt32(comboBoxDress.SelectedValue),
 					Count = Convert.ToInt32(textBoxCount.Text),
 					Sum = Convert.ToInt32(textBoxSum.Text)
 				});

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,37 +13,37 @@ using Unity;
 
 namespace DressSewingView
 {
-    public partial class FormProduct : Form
+    public partial class FormDress : Form
     {
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
 
 		public int Id { set { id = value; } }
 
-		private readonly IProductService service;
+		private readonly IDressService service;
 
 		private int? id;
 
-		private List<ProductComponentViewModel> productComponents;
+		private List<DressMaterialViewModel> DressMaterials;
 
-		public FormProduct(IProductService service)
+		public FormDress(IDressService service)
         {
             InitializeComponent();
 			this.service = service;
 		}
 
-		private void FormProduct_Load(object sender, EventArgs e)
+		private void FormDress_Load(object sender, EventArgs e)
 		{
 			if (id.HasValue)
 			{
 				try
 				{
-					ProductViewModel view = service.GetElement(id.Value);
+					DressViewModel view = service.GetElement(id.Value);
 					if (view != null)
 					{
-						textBoxName.Text = view.ProductName;
+						textBoxName.Text = view.DressName;
 						textBoxPrice.Text = view.Price.ToString();
-						productComponents = view.ProductComponents;
+						DressMaterials = view.DressMaterials;
 						LoadData();
 					}
 				}
@@ -56,7 +55,7 @@ namespace DressSewingView
 			}
 			else
 			{
-				productComponents = new List<ProductComponentViewModel>();
+				DressMaterials = new List<DressMaterialViewModel>();
 			}
 		}
 
@@ -64,10 +63,10 @@ namespace DressSewingView
 		{
 			try
 			{
-				if (productComponents != null)
+				if (DressMaterials != null)
 				{
 					dataGridView.DataSource = null;
-					dataGridView.DataSource = productComponents;
+					dataGridView.DataSource = DressMaterials;
 					dataGridView.Columns[0].Visible = false;
 					dataGridView.Columns[1].Visible = false;
 					dataGridView.Columns[2].Visible = false;
@@ -84,16 +83,16 @@ namespace DressSewingView
 
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormProductComponent>();
+			var form = Container.Resolve<FormDressMaterial>();
 			if (form.ShowDialog() == DialogResult.OK)
 			{
 				if (form.Model != null)
 				{
 					if (id.HasValue)
 					{
-						form.Model.ProductId = id.Value;
+						form.Model.DressId = id.Value;
 					}
-					productComponents.Add(form.Model);
+					DressMaterials.Add(form.Model);
 				}
 				LoadData();
 			}
@@ -103,12 +102,12 @@ namespace DressSewingView
 		{
 			if (dataGridView.SelectedRows.Count == 1)
 			{
-				var form = Container.Resolve<FormProductComponent>();
+				var form = Container.Resolve<FormDressMaterial>();
 				form.Model =
-				productComponents[dataGridView.SelectedRows[0].Cells[0].RowIndex];
+				DressMaterials[dataGridView.SelectedRows[0].Cells[0].RowIndex];
 				if (form.ShowDialog() == DialogResult.OK)
 				{
-					productComponents[dataGridView.SelectedRows[0].Cells[0].RowIndex] = form.Model;
+					DressMaterials[dataGridView.SelectedRows[0].Cells[0].RowIndex] = form.Model;
 					LoadData();
 				}
 			}
@@ -123,7 +122,7 @@ namespace DressSewingView
 				{
 					try
 					{
-						productComponents.RemoveAt(dataGridView.SelectedRows[0].Cells[0].RowIndex);
+						DressMaterials.RemoveAt(dataGridView.SelectedRows[0].Cells[0].RowIndex);
 					}
 					catch (Exception ex)
 					{
@@ -154,7 +153,7 @@ namespace DressSewingView
 				MessageBoxIcon.Error);
 				return;
 			}
-			if (productComponents == null || productComponents.Count == 0)
+			if (DressMaterials == null || DressMaterials.Count == 0)
 			{
 				MessageBox.Show("Заполните компоненты", "Ошибка", MessageBoxButtons.OK,
 				MessageBoxIcon.Error);
@@ -162,35 +161,35 @@ namespace DressSewingView
 			}
 			try
 			{
-				List<ProductComponentBindingModel> productComponentBM = new
-				List<ProductComponentBindingModel>();
-				for (int i = 0; i < productComponents.Count; ++i)
+				List<DressMaterialBindingModel> DressMaterialBM = new
+				List<DressMaterialBindingModel>();
+				for (int i = 0; i < DressMaterials.Count; ++i)
 				{
-					productComponentBM.Add(new ProductComponentBindingModel
+					DressMaterialBM.Add(new DressMaterialBindingModel
 					{
-						Id = productComponents[i].Id,
-						ProductId = productComponents[i].ProductId,
-						ComponentId = productComponents[i].ComponentId,
-						Count = productComponents[i].Count
+						Id = DressMaterials[i].Id,
+						DressId = DressMaterials[i].DressId,
+						MaterialId = DressMaterials[i].MaterialId,
+						Count = DressMaterials[i].Count
 					});
 				}
 				if (id.HasValue)
 				{
-					service.UpdElement(new ProductBindingModel
+					service.UpdElement(new DressBindingModel
 					{
 						Id = id.Value,
-						ProductName = textBoxName.Text,
+						DressName = textBoxName.Text,
 						Price = Convert.ToInt32(textBoxPrice.Text),
-						ProductComponents = productComponentBM
+						DressMaterials = DressMaterialBM
 					});
 				}
 				else
 				{
-					service.AddElement(new ProductBindingModel
+					service.AddElement(new DressBindingModel
 					{
-						ProductName = textBoxName.Text,
+						DressName = textBoxName.Text,
 						Price = Convert.ToInt32(textBoxPrice.Text),
-						ProductComponents = productComponentBM
+						DressMaterials = DressMaterialBM
 					});
 				}
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение",
