@@ -18,9 +18,11 @@ namespace DressSewingView
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+			var container = BuildUnityContainer();
+
+			Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(container.Resolve<FormMain>());
         }
 
         public static IUnityContainer BuildUnityContainer()
