@@ -1,6 +1,6 @@
 ﻿namespace DressSewingView
 {
-    partial class FormMaterial
+    partial class FormDress
     {
         /// <summary>
         /// Required designer variable.

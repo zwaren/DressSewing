@@ -80,7 +80,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
             this.Name = "FormMaterrial";
-            this.Text = "FormMaterrial";
+            this.Text = "Материал";
             this.ResumeLayout(false);
             this.PerformLayout();
 

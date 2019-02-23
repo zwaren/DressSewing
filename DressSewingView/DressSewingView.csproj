@@ -187,6 +187,7 @@
     <None Include="Properties\DataSources\DressSewingServiceDAL.BindingModels.ProductBindingModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ClientViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressMaterialViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.MaterialViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductComponentViewModel.datasource" />

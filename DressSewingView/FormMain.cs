@@ -61,7 +61,7 @@ namespace DressSewingView
 
 		private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormMaterial>();
+			var form = Container.Resolve<FormDresses>();
 			form.ShowDialog();
 		}
 
