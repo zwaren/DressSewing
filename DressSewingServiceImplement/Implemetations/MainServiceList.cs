@@ -19,53 +19,27 @@ namespace DressSewingServiceImplement.Implemetations
         }
         public List<RequestViewModel> GetList()
         {
-            List<RequestViewModel> result = new List<RequestViewModel>();
-            for (int i = 0; i < source.Requests.Count; ++i)
-            {
-                string DesignerFIO = string.Empty;
-                for (int j = 0; j < source.Designers.Count; ++j)
+            List<RequestViewModel> result = source.Requests
+                .Select(rec => new RequestViewModel
                 {
-                    if (source.Designers[j].Id == source.Requests[i].DesignerId)
-                    {
-                        DesignerFIO = source.Designers[j].DesignerFIO;
-                        break;
-                    }
-                }
-                string DressName = string.Empty;
-                for (int j = 0; j < source.Dresses.Count; ++j)
-                {
-                    if (source.Dresses[j].Id == source.Requests[i].DressId)
-                    {
-                        DressName = source.Dresses[j].DressName;
-                        break;
-                    }
-                }
-                result.Add(new RequestViewModel
-                {
-                    Id = source.Requests[i].Id,
-                    DesignerId = source.Requests[i].DesignerId,
-                    DesignerFIO = DesignerFIO,
-                    DressId = source.Requests[i].DressId,
-                    DressName = DressName,
-                    Count = source.Requests[i].Count,
-                    Sum = source.Requests[i].Sum,
-                    DateCreate = source.Requests[i].DateCreate.ToLongDateString(),
-                    DateImplement = source.Requests[i].DateImplement?.ToLongDateString(),
-                    Status = source.Requests[i].Status.ToString()
-                });
-            }
+                    Id = rec.Id,
+                    DesignerId = rec.DesignerId,
+                    DressId = rec.DressId,
+                    DateCreate = rec.DateCreate.ToLongDateString(),
+                    DateImplement = rec.DateImplement?.ToLongDateString(),
+                    Status = rec.Status.ToString(),
+                    Count = rec.Count,
+                    Sum = rec.Sum,
+                    DesignerFIO = source.Designers.FirstOrDefault(recC => recC.Id == rec.DesignerId)?.DesignerFIO,
+                    DressName = source.Dresses.FirstOrDefault(recP => recP.Id == rec.DressId)?.DressName,
+                })
+                .ToList();
             return result;
         }
+
         public void CreateRequest(RequestBindingModel model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.Requests.Count; ++i)
-            {
-                if (source.Requests[i].Id > maxId)
-                {
-                    maxId = source.Designers[i].Id;
-                }
-            }
+            int maxId = source.Requests.Count > 0 ? source.Requests.Max(rec => rec.Id) : 0;
             source.Requests.Add(new Request
             {
                 Id = maxId + 1,
@@ -77,69 +51,68 @@ namespace DressSewingServiceImplement.Implemetations
                 Status = RequestStatus.Принят
             });
         }
+
         public void TakeRequestInWork(RequestBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Requests.Count; ++i)
-            {
-                if (source.Requests[i].Id == model.Id)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            if (index == -1)
+            Request element = source.Requests.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            if (source.Requests[index].Status != RequestStatus.Принят)
+            if (element.Status != RequestStatus.Принят)
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
-            source.Requests[index].DateImplement = DateTime.Now;
-            source.Requests[index].Status = RequestStatus.Выполняется;
+            element.DateImplement = DateTime.Now;
+            element.Status = RequestStatus.Выполняется;
         }
+
         public void FinishRequest(RequestBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Requests.Count; ++i)
-            {
-                if (source.Designers[i].Id == model.Id)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            if (index == -1)
+            Request element = source.Requests.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            if (source.Requests[index].Status != RequestStatus.Выполняется)
+            if (element.Status != RequestStatus.Выполняется)
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }
-            source.Requests[index].Status = RequestStatus.Готов;
+            element.Status = RequestStatus.Готов;
         }
+
         public void PayRequest(RequestBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Requests.Count; ++i)
-            {
-                if (source.Designers[i].Id == model.Id)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            if (index == -1)
+            Request element = source.Requests.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            if (source.Requests[index].Status != RequestStatus.Готов)
+            if (element.Status != RequestStatus.Готов)
             {
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }
-            source.Requests[index].Status = RequestStatus.Оплачен;
+            element.Status = RequestStatus.Оплачен;
+        }
+
+        public void PutMaterialInStore(StoreMaterialBindingModel model)
+        {
+            StoreMaterial element = source.StoreMaterials.FirstOrDefault(rec => rec.StoreId == model.StoreId && rec.MaterialId == model.MaterialId);
+            if (element != null)
+            {
+                element.Count += model.Count;
+            }
+            else
+            {
+                int maxId = source.StoreMaterials.Count > 0 ? source.StoreMaterials.Max(rec => rec.Id) : 0;
+                source.StoreMaterials.Add(new StoreMaterial
+                {
+                    Id = ++maxId,
+                    StoreId = model.StoreId,
+                    MaterialId = model.MaterialId,
+                    Count = model.Count
+                });
+            }
         }
     }
 }

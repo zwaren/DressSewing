@@ -47,6 +47,7 @@
     <Compile Include="Implemetations\MainServiceList.cs" />
     <Compile Include="Implemetations\DressMaterialServiceList.cs" />
     <Compile Include="Implemetations\DressServiceList.cs" />
+    <Compile Include="Implemetations\StoreServiceList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
