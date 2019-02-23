@@ -1,6 +1,6 @@
 ﻿namespace DressSewingView
 {
-    partial class FormClient
+    partial class FormDesigner
     {
         /// <summary>
         /// Required designer variable.
@@ -69,19 +69,19 @@
 			this.buttonSave.Text = "Сохранить";
 			this.buttonSave.UseVisualStyleBackColor = true;
 			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-			// 
-			// FormClient
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            // 
+            // FormDesigner
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(277, 74);
 			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.textBoxFIO);
 			this.Controls.Add(this.label1);
-			this.Name = "FormClient";
+			this.Name = "FormDesigner";
 			this.Text = "Клиент";
-			this.Load += new System.EventHandler(this.FormClient_Load);
+			this.Load += new System.EventHandler(this.FormDesigner_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

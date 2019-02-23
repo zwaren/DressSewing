@@ -77,30 +77,36 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Unity.Abstractions, Version=4.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.9.4\lib\net46\Unity.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Unity.5.9.5\lib\net46\Unity.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Container, Version=5.9.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.9.4\lib\net46\Unity.Container.dll</HintPath>
+    <Reference Include="Unity.Container, Version=5.9.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.9.5\lib\net46\Unity.Container.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormClient.cs">
+    <Compile Include="FormDesigner.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClient.Designer.cs">
-      <DependentUpon>FormClient.cs</DependentUpon>
+    <Compile Include="FormDesigner.Designer.cs">
+      <DependentUpon>FormDesigner.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormClients.cs">
+    <Compile Include="FormDesigners.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClients.Designer.cs">
-      <DependentUpon>FormClients.cs</DependentUpon>
+    <Compile Include="FormDesigners.Designer.cs">
+      <DependentUpon>FormDesigners.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCreateOrder.cs">
+    <Compile Include="FormCreateRequest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCreateOrder.Designer.cs">
-      <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    <Compile Include="FormCreateRequest.Designer.cs">
+      <DependentUpon>FormCreateRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDresses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDresses.Designer.cs">
+      <DependentUpon>FormDresses.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -120,19 +126,34 @@
     <Compile Include="FormDressMaterial.Designer.cs">
       <DependentUpon>FormDressMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMaterials.Designer.cs">
+      <DependentUpon>FormMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMaterrial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMaterrial.Designer.cs">
+      <DependentUpon>FormMaterrial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormClient.resx">
-      <DependentUpon>FormClient.cs</DependentUpon>
+    <EmbeddedResource Include="FormDesigner.resx">
+      <DependentUpon>FormDesigner.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClients.resx">
-      <DependentUpon>FormClients.cs</DependentUpon>
+    <EmbeddedResource Include="FormDesigners.resx">
+      <DependentUpon>FormDesigners.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCreateOrder.resx">
-      <DependentUpon>FormCreateOrder.cs</DependentUpon>
+    <EmbeddedResource Include="FormCreateRequest.resx">
+      <DependentUpon>FormCreateRequest.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDresses.resx">
+      <DependentUpon>FormDresses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -145,6 +166,12 @@
     <EmbeddedResource Include="FormDressMaterial.resx">
       <DependentUpon>FormDressMaterial.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMaterials.resx">
+      <DependentUpon>FormMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMaterrial.resx">
+      <DependentUpon>FormMaterrial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -159,6 +186,8 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.BindingModels.ProductBindingModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ClientViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressMaterialViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.MaterialViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductComponentViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductViewModel.datasource" />

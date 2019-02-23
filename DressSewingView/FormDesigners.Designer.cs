@@ -1,6 +1,6 @@
 ﻿namespace DressSewingView
 {
-    partial class FormClients
+    partial class FormDesigners
     {
         /// <summary>
         /// Required designer variable.
@@ -34,11 +34,11 @@
 			this.buttonUpd = new System.Windows.Forms.Button();
 			this.buttonDel = new System.Windows.Forms.Button();
 			this.buttonRef = new System.Windows.Forms.Button();
-			this.clientViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.designerViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.clientFIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.designerFIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.clientViewModelBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.designerViewModelBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView
@@ -47,8 +47,8 @@
 			this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
-            this.clientFIODataGridViewTextBoxColumn});
-			this.dataGridView.DataSource = this.clientViewModelBindingSource;
+            this.designerFIODataGridViewTextBoxColumn});
+			this.dataGridView.DataSource = this.designerViewModelBindingSource;
 			this.dataGridView.Location = new System.Drawing.Point(1, 1);
 			this.dataGridView.Name = "dataGridView";
 			this.dataGridView.Size = new System.Drawing.Size(413, 424);
@@ -93,26 +93,26 @@
 			this.buttonRef.Text = "Обновить";
 			this.buttonRef.UseVisualStyleBackColor = true;
 			this.buttonRef.Click += new System.EventHandler(this.buttonRef_Click);
-			// 
-			// clientViewModelBindingSource
-			// 
-			this.clientViewModelBindingSource.DataSource = typeof(DressSewingServiceDAL.ViewModels.ClientViewModel);
+            // 
+            // designerViewModelBindingSource
+            // 
+            this.designerViewModelBindingSource.DataSource = typeof(DressSewingServiceDAL.ViewModels.DesignerViewModel);
 			// 
 			// idDataGridViewTextBoxColumn
 			// 
 			this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
 			this.idDataGridViewTextBoxColumn.HeaderText = "Id";
 			this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-			// 
-			// clientFIODataGridViewTextBoxColumn
-			// 
-			this.clientFIODataGridViewTextBoxColumn.DataPropertyName = "ClientFIO";
-			this.clientFIODataGridViewTextBoxColumn.HeaderText = "ClientFIO";
-			this.clientFIODataGridViewTextBoxColumn.Name = "clientFIODataGridViewTextBoxColumn";
-			// 
-			// FormClients
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            // 
+            // designerFIODataGridViewTextBoxColumn
+            // 
+            this.designerFIODataGridViewTextBoxColumn.DataPropertyName = "DesignerFIO";
+			this.designerFIODataGridViewTextBoxColumn.HeaderText = "DesignerFIO";
+			this.designerFIODataGridViewTextBoxColumn.Name = "designerFIODataGridViewTextBoxColumn";
+            // 
+            // FormDesigners
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(537, 426);
 			this.Controls.Add(this.buttonRef);
@@ -120,11 +120,11 @@
 			this.Controls.Add(this.buttonUpd);
 			this.Controls.Add(this.buttonAdd);
 			this.Controls.Add(this.dataGridView);
-			this.Name = "FormClients";
+			this.Name = "FormDesigners";
 			this.Text = "Клиенты";
-			this.Load += new System.EventHandler(this.FormClients_Load);
+			this.Load += new System.EventHandler(this.FormDesigners_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.clientViewModelBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.designerViewModelBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -137,7 +137,7 @@
 		private System.Windows.Forms.Button buttonDel;
 		private System.Windows.Forms.Button buttonRef;
 		private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-		private System.Windows.Forms.DataGridViewTextBoxColumn clientFIODataGridViewTextBoxColumn;
-		private System.Windows.Forms.BindingSource clientViewModelBindingSource;
+		private System.Windows.Forms.DataGridViewTextBoxColumn designerFIODataGridViewTextBoxColumn;
+		private System.Windows.Forms.BindingSource designerViewModelBindingSource;
 	}
 }

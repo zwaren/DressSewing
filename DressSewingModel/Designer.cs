@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace DressSewingModel
 {
-    public enum OrderStatus
+    public class Designer
     {
-        Принят = 0,
-        Выполняется = 1,
-        Готов = 2,
-        Оплачен = 3
+        public int Id { get; set; }
+        public string DesignerFIO { get; set; }
     }
 }

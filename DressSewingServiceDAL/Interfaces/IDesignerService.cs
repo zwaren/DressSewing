@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceDAL.Interfaces
 {
-    public interface IClientService
+    public interface IDesignerService
     {
-        List<ClientViewModel> GetList();
-        ClientViewModel GetElement(int id);
-        void AddElement(ClientBindingModel model);
-        void UpdElement(ClientBindingModel model);
+        List<DesignerViewModel> GetList();
+        DesignerViewModel GetElement(int id);
+        void AddElement(DesignerBindingModel model);
+        void UpdElement(DesignerBindingModel model);
         void DelElement(int id);
     }
 }

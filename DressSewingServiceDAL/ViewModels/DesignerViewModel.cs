@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceDAL.ViewModels
 {
-    public class ClientViewModel
+    public class DesignerViewModel
     {
         public int Id { get; set; }
-        public string ClientFIO { get; set; }
+        public string DesignerFIO { get; set; }
     }
 }

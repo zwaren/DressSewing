@@ -13,7 +13,7 @@ using Unity;
 
 namespace DressSewingView
 {
-    public partial class FormDress : Form
+    public partial class FormMaterial : Form
     {
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
@@ -26,7 +26,7 @@ namespace DressSewingView
 
 		private List<DressMaterialViewModel> DressMaterials;
 
-		public FormDress(IDressService service)
+		public FormMaterial(IDressService service)
         {
             InitializeComponent();
 			this.service = service;
@@ -56,7 +56,8 @@ namespace DressSewingView
 			else
 			{
 				DressMaterials = new List<DressMaterialViewModel>();
-			}
+                LoadData();
+            }
 		}
 
 		private void LoadData()

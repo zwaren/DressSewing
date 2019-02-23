@@ -14,18 +14,18 @@ using Unity;
 
 namespace DressSewingView
 {
-    public partial class FormClient : Form
+    public partial class FormDesigner : Form
     {
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
 
 		public int Id { set { id = value; } }
 
-		private readonly IClientService service;
+		private readonly IDesignerService service;
 
 		private int? id;
 
-		public FormClient(IClientService service)
+		public FormDesigner(IDesignerService service)
         {
             InitializeComponent();
 			this.service = service;
@@ -43,17 +43,17 @@ namespace DressSewingView
 			{
 				if (id.HasValue)
 				{
-					service.UpdElement(new ClientBindingModel
+					service.UpdElement(new DesignerBindingModel
 					{
 						Id = id.Value,
-						ClientFIO = textBoxFIO.Text
+						DesignerFIO = textBoxFIO.Text
 					});
 				}
 				else
 				{
-					service.AddElement(new ClientBindingModel
+					service.AddElement(new DesignerBindingModel
 					{
-						ClientFIO = textBoxFIO.Text
+						DesignerFIO = textBoxFIO.Text
 					});
 				}
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение",
@@ -74,16 +74,16 @@ namespace DressSewingView
 			Close();
 		}
 
-		private void FormClient_Load(object sender, EventArgs e)
+		private void FormDesigner_Load(object sender, EventArgs e)
 		{
 			if (id.HasValue)
 			{
 				try
 				{
-					ClientViewModel view = service.GetElement(id.Value);
+					DesignerViewModel view = service.GetElement(id.Value);
 					if (view != null)
 					{
-						textBoxFIO.Text = view.ClientFIO;
+						textBoxFIO.Text = view.DesignerFIO;
 					}
 				}
 				catch (Exception ex)

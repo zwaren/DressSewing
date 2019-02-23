@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
+using DressSewingServiceDAL.ViewModels;
 using Unity;
 
 namespace DressSewingView
@@ -27,30 +28,46 @@ namespace DressSewingView
 		}
 		private void LoadData()
 		{
-			
-		}
+            try
+            {
+                List<RequestViewModel> list = service.GetList();
+                if (list != null)
+                {
+                    dataGridView.DataSource = list;
+                    dataGridView.Columns[0].Visible = false;
+                    dataGridView.Columns[1].Visible = false;
+                    dataGridView.Columns[3].Visible = false;
+                    dataGridView.Columns[5].Visible = false;
+                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 		private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormClients>();
+			var form = Container.Resolve<FormDesigners>();
 			form.ShowDialog();
 		}
 
 		private void компонентыToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormDressMaterial>();
+			var form = Container.Resolve<FormMaterials>();
 			form.ShowDialog();
 		}
 
 		private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormDress>();
+			var form = Container.Resolve<FormMaterial>();
 			form.ShowDialog();
 		}
 
 		private void buttonCreateOrder_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormCreateOrder>();
+			var form = Container.Resolve<FormCreateRequest>();
 			form.ShowDialog();
 			LoadData();
 		}
@@ -62,7 +79,7 @@ namespace DressSewingView
 				int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 				try
 				{
-					service.TakeOrderInWork(new OrderBindingModel { Id = id });
+					service.TakeRequestInWork(new RequestBindingModel { Id = id });
 					LoadData();
 				}
 				catch (Exception ex)
@@ -80,7 +97,7 @@ namespace DressSewingView
 				int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 				try
 				{
-					service.FinishOrder(new OrderBindingModel { Id = id });
+					service.FinishRequest(new RequestBindingModel { Id = id });
 					LoadData();
 				}
 				catch (Exception ex)
@@ -98,7 +115,7 @@ namespace DressSewingView
 				int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 				try
 				{
-					service.PayOrder(new OrderBindingModel { Id = id });
+					service.PayRequest(new RequestBindingModel { Id = id });
 					LoadData();
 				}
 				catch (Exception ex)
@@ -113,5 +130,10 @@ namespace DressSewingView
 		{
 			LoadData();
 		}
-	}
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+    }
 }

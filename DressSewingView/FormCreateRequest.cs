@@ -14,18 +14,18 @@ using Unity;
 
 namespace DressSewingView
 {
-    public partial class FormCreateOrder : Form
+    public partial class FormCreateRequest : Form
     {
 		[Dependency]
 		public new IUnityContainer Container { get; set; }
 
-		private readonly IClientService serviceC;
+		private readonly IDesignerService serviceC;
 
 		private readonly IDressService serviceP;
 
 		private readonly IMainService serviceM;
 
-		public FormCreateOrder(IClientService serviceC, IDressService serviceP, IMainService serviceM)
+		public FormCreateRequest(IDesignerService serviceC, IDressService serviceP, IMainService serviceM)
 		{
 			InitializeComponent();
 			this.serviceC = serviceC;
@@ -37,13 +37,13 @@ namespace DressSewingView
 		{
 			try
 			{
-				List<ClientViewModel> listC = serviceC.GetList();
+				List<DesignerViewModel> listC = serviceC.GetList();
 				if (listC != null)
 				{
-					comboBoxClient.DisplayMember = "ClientFIO";
-					comboBoxClient.ValueMember = "Id";
-					comboBoxClient.DataSource = listC;
-					comboBoxClient.SelectedItem = null;
+					comboBoxDesigner.DisplayMember = "DesignerFIO";
+					comboBoxDesigner.ValueMember = "Id";
+					comboBoxDesigner.DataSource = listC;
+					comboBoxDesigner.SelectedItem = null;
 				}
 				List<DressViewModel> listP = serviceP.GetList();
 				if (listP != null)
@@ -99,7 +99,7 @@ namespace DressSewingView
 				MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			if (comboBoxClient.SelectedValue == null)
+			if (comboBoxDesigner.SelectedValue == null)
 			{
 				MessageBox.Show("Выберите клиента", "Ошибка", MessageBoxButtons.OK,
 				MessageBoxIcon.Error);
@@ -113,9 +113,9 @@ namespace DressSewingView
 			}
 			try
 			{
-				serviceM.CreateOrder(new OrderBindingModel
+				serviceM.CreateRequest(new RequestBindingModel
 				{
-					ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
+					DesignerId = Convert.ToInt32(comboBoxDesigner.SelectedValue),
 					DressId = Convert.ToInt32(comboBoxDress.SelectedValue),
 					Count = Convert.ToInt32(textBoxCount.Text),
 					Sum = Convert.ToInt32(textBoxSum.Text)
@@ -137,5 +137,6 @@ namespace DressSewingView
 			DialogResult = DialogResult.Cancel;
 			Close();
 		}
-	}
+        
+    }
 }

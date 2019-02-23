@@ -10,16 +10,16 @@ namespace DressSewingServiceImplement
     class DataListSingleton
     {
         private static DataListSingleton instance;
-        public List<Client> Clients { get; set; }
+        public List<Designer> Designers { get; set; }
         public List<Material> Materials { get; set; }
-        public List<Order> Orders { get; set; }
+        public List<Request> Requests { get; set; }
         public List<Dress> Dresses { get; set; }
         public List<DressMaterial> DressMaterials { get; set; }
         private DataListSingleton()
         {
-            Clients = new List<Client>();
+            Designers = new List<Designer>();
 			Materials = new List<Material>();
-            Orders = new List<Order>();
+            Requests = new List<Request>();
 			Dresses = new List<Dress>();
 			DressMaterials = new List<DressMaterial>();
         }

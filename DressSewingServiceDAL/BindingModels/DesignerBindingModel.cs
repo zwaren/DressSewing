@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceDAL.BindingModels
 {
-    public class ClientBindingModel
+    public class DesignerBindingModel
     {
         public int Id { get; set; }
-        public string ClientFIO { get; set; }
+        public string DesignerFIO { get; set; }
     }
 }

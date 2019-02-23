@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceDAL.ViewModels
 {
-    public class OrderViewModel
+    public class RequestViewModel
     {
         public int Id { get; set; }
-        public int ClientId { get; set; }
-        public string ClientFIO { get; set; }
+        public int DesignerId { get; set; }
+        public string DesignerFIO { get; set; }
         public int DressId { get; set; }
         public string DressName { get; set; }
         public int Count { get; set; }

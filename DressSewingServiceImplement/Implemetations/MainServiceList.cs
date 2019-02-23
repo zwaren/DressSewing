@@ -17,72 +17,72 @@ namespace DressSewingServiceImplement.Implemetations
         {
             source = DataListSingleton.GetInstance();
         }
-        public List<OrderViewModel> GetList()
+        public List<RequestViewModel> GetList()
         {
-            List<OrderViewModel> result = new List<OrderViewModel>();
-            for (int i = 0; i < source.Orders.Count; ++i)
+            List<RequestViewModel> result = new List<RequestViewModel>();
+            for (int i = 0; i < source.Requests.Count; ++i)
             {
-                string clientFIO = string.Empty;
-                for (int j = 0; j < source.Clients.Count; ++j)
+                string DesignerFIO = string.Empty;
+                for (int j = 0; j < source.Designers.Count; ++j)
                 {
-                    if (source.Clients[j].Id == source.Orders[i].ClientId)
+                    if (source.Designers[j].Id == source.Requests[i].DesignerId)
                     {
-                        clientFIO = source.Clients[j].ClientFIO;
+                        DesignerFIO = source.Designers[j].DesignerFIO;
                         break;
                     }
                 }
                 string DressName = string.Empty;
                 for (int j = 0; j < source.Dresses.Count; ++j)
                 {
-                    if (source.Dresses[j].Id == source.Orders[i].DressId)
+                    if (source.Dresses[j].Id == source.Requests[i].DressId)
                     {
                         DressName = source.Dresses[j].DressName;
                         break;
                     }
                 }
-                result.Add(new OrderViewModel
+                result.Add(new RequestViewModel
                 {
-                    Id = source.Orders[i].Id,
-                    ClientId = source.Orders[i].ClientId,
-                    ClientFIO = clientFIO,
-                    DressId = source.Orders[i].DressId,
+                    Id = source.Requests[i].Id,
+                    DesignerId = source.Requests[i].DesignerId,
+                    DesignerFIO = DesignerFIO,
+                    DressId = source.Requests[i].DressId,
                     DressName = DressName,
-                    Count = source.Orders[i].Count,
-                    Sum = source.Orders[i].Sum,
-                    DateCreate = source.Orders[i].DateCreate.ToLongDateString(),
-                    DateImplement = source.Orders[i].DateImplement?.ToLongDateString(),
-                    Status = source.Orders[i].Status.ToString()
+                    Count = source.Requests[i].Count,
+                    Sum = source.Requests[i].Sum,
+                    DateCreate = source.Requests[i].DateCreate.ToLongDateString(),
+                    DateImplement = source.Requests[i].DateImplement?.ToLongDateString(),
+                    Status = source.Requests[i].Status.ToString()
                 });
             }
             return result;
         }
-        public void CreateOrder(OrderBindingModel model)
+        public void CreateRequest(RequestBindingModel model)
         {
             int maxId = 0;
-            for (int i = 0; i < source.Orders.Count; ++i)
+            for (int i = 0; i < source.Requests.Count; ++i)
             {
-                if (source.Orders[i].Id > maxId)
+                if (source.Requests[i].Id > maxId)
                 {
-                    maxId = source.Clients[i].Id;
+                    maxId = source.Designers[i].Id;
                 }
             }
-            source.Orders.Add(new Order
+            source.Requests.Add(new Request
             {
                 Id = maxId + 1,
-                ClientId = model.ClientId,
+                DesignerId = model.DesignerId,
                 DressId = model.DressId,
                 DateCreate = DateTime.Now,
                 Count = model.Count,
                 Sum = model.Sum,
-                Status = OrderStatus.Принят
+                Status = RequestStatus.Принят
             });
         }
-        public void TakeOrderInWork(OrderBindingModel model)
+        public void TakeRequestInWork(RequestBindingModel model)
         {
             int index = -1;
-            for (int i = 0; i < source.Orders.Count; ++i)
+            for (int i = 0; i < source.Requests.Count; ++i)
             {
-                if (source.Orders[i].Id == model.Id)
+                if (source.Requests[i].Id == model.Id)
                 {
                     index = i;
                     break;
@@ -92,19 +92,19 @@ namespace DressSewingServiceImplement.Implemetations
             {
                 throw new Exception("Элемент не найден");
             }
-            if (source.Orders[index].Status != OrderStatus.Принят)
+            if (source.Requests[index].Status != RequestStatus.Принят)
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
-            source.Orders[index].DateImplement = DateTime.Now;
-            source.Orders[index].Status = OrderStatus.Выполняется;
+            source.Requests[index].DateImplement = DateTime.Now;
+            source.Requests[index].Status = RequestStatus.Выполняется;
         }
-        public void FinishOrder(OrderBindingModel model)
+        public void FinishRequest(RequestBindingModel model)
         {
             int index = -1;
-            for (int i = 0; i < source.Orders.Count; ++i)
+            for (int i = 0; i < source.Requests.Count; ++i)
             {
-                if (source.Clients[i].Id == model.Id)
+                if (source.Designers[i].Id == model.Id)
                 {
                     index = i;
                     break;
@@ -114,18 +114,18 @@ namespace DressSewingServiceImplement.Implemetations
             {
                 throw new Exception("Элемент не найден");
             }
-            if (source.Orders[index].Status != OrderStatus.Выполняется)
+            if (source.Requests[index].Status != RequestStatus.Выполняется)
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }
-            source.Orders[index].Status = OrderStatus.Готов;
+            source.Requests[index].Status = RequestStatus.Готов;
         }
-        public void PayOrder(OrderBindingModel model)
+        public void PayRequest(RequestBindingModel model)
         {
             int index = -1;
-            for (int i = 0; i < source.Orders.Count; ++i)
+            for (int i = 0; i < source.Requests.Count; ++i)
             {
-                if (source.Clients[i].Id == model.Id)
+                if (source.Designers[i].Id == model.Id)
                 {
                     index = i;
                     break;
@@ -135,11 +135,11 @@ namespace DressSewingServiceImplement.Implemetations
             {
                 throw new Exception("Элемент не найден");
             }
-            if (source.Orders[index].Status != OrderStatus.Готов)
+            if (source.Requests[index].Status != RequestStatus.Готов)
             {
                 throw new Exception("Заказ не в статусе \"Готов\"");
             }
-            source.Orders[index].Status = OrderStatus.Оплачен;
+            source.Requests[index].Status = RequestStatus.Оплачен;
         }
     }
 }

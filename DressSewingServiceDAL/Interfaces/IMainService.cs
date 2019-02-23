@@ -10,10 +10,10 @@ namespace DressSewingServiceDAL.Interfaces
 {
     public interface IMainService
     {
-        List<OrderViewModel> GetList();
-        void CreateOrder(OrderBindingModel model);
-        void TakeOrderInWork(OrderBindingModel model);
-        void FinishOrder(OrderBindingModel model);
-        void PayOrder(OrderBindingModel model);
+        List<RequestViewModel> GetList();
+        void CreateRequest(RequestBindingModel model);
+        void TakeRequestInWork(RequestBindingModel model);
+        void FinishRequest(RequestBindingModel model);
+        void PayRequest(RequestBindingModel model);
     }
 }
