@@ -25,17 +25,17 @@ namespace DressSewingServiceImplement.Implemetations
                 Id = rec.Id,
                 StoreName = rec.StoreName,
                 StoreMaterials = source.StoreMaterials
-            .Where(recPC => recPC.StoreId == rec.Id)
-            .Select(recPC => new StoreMaterialViewModel
-            {
-                Id = recPC.Id,
-                StoreId = recPC.StoreId,
-                MaterialId = recPC.MaterialId,
-                MaterialName = source.Materials
-            .FirstOrDefault(recC => recC.Id == recPC.MaterialId)?.MaterialName,
-                Count = recPC.Count
-            })
-            .ToList()
+					.Where(recPC => recPC.StoreId == rec.Id)
+					.Select(recPC => new StoreMaterialViewModel
+					{
+						Id = recPC.Id,
+						StoreId = recPC.StoreId,
+						MaterialId = recPC.MaterialId,
+						MaterialName = source.Materials
+							.FirstOrDefault(recC => recC.Id == recPC.MaterialId)?.MaterialName,
+						Count = recPC.Count
+					})
+					.ToList()
             })
             .ToList();
             return result;
@@ -51,16 +51,16 @@ namespace DressSewingServiceImplement.Implemetations
                     Id = element.Id,
                     StoreName = element.StoreName,
                     StoreMaterials = source.StoreMaterials
-                .Where(recPC => recPC.StoreId == element.Id)
-                .Select(recPC => new StoreMaterialViewModel
-                {
-                    Id = recPC.Id,
-                    StoreId = recPC.StoreId,
-                    MaterialId = recPC.MaterialId,
-                    MaterialName = source.Materials
-                .FirstOrDefault(recC => recC.Id == recPC.MaterialId)?.MaterialName,
-                    Count = recPC.Count
-                })
+						.Where(recPC => recPC.StoreId == element.Id)
+						.Select(recPC => new StoreMaterialViewModel
+						{
+							Id = recPC.Id,
+							StoreId = recPC.StoreId,
+							MaterialId = recPC.MaterialId,
+							MaterialName = source.Materials
+								.FirstOrDefault(recC => recC.Id == recPC.MaterialId)?.MaterialName,
+							Count = recPC.Count
+						})
                 .ToList()
                 };
             }

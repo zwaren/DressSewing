@@ -21,94 +21,76 @@ namespace DressSewingServiceImplement.Implemetations
 
         public void AddElement(DressMaterialBindingModel model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.DressMaterials.Count; ++i)
-            {
-                if (source.DressMaterials[i].Id > maxId)
-                {
-                    maxId = source.DressMaterials[i].Id;
-                }
-                if (source.DressMaterials[i].MaterialName == model.MaterialName)
-                {
-                    throw new Exception("Уже есть материал с таким именем");
-                }
-            }
-            source.DressMaterials.Add(new DressMaterial
-            {
-                Id = maxId + 1,
-                DressId = model.DressId,
-                MaterialId = model.MaterialId,
-                Count = model.Count,
-                MaterialName = model.MaterialName
-            });
+			DressMaterial element = source.DressMaterials.FirstOrDefault(rec => rec.MaterialName == model.MaterialName);
+			if (element != null)
+			{
+				throw new Exception("Уже есть материал с таким именем");
+			}
+			int maxId = source.DressMaterials.Count > 0 ? source.DressMaterials.Max(rec => rec.Id) : 0;
+			source.DressMaterials.Add(new DressMaterial
+			{
+				Id = maxId + 1,
+				DressId = model.DressId,
+				MaterialId = model.MaterialId,
+				Count = model.Count,
+				MaterialName = model.MaterialName
+			});
         }
 
         public void DelElement(int id)
         {
-            for (int i = 0; i < source.DressMaterials.Count; ++i)
-            {
-                if (source.DressMaterials[i].Id == id)
-                {
-                    source.DressMaterials.RemoveAt(i);
-                    return;
-                }
-            }
-            throw new Exception("Элемент не найден");
-        }
+			DressMaterial element = source.DressMaterials.FirstOrDefault(rec => rec.Id == id);
+			if (element != null)
+			{
+				source.DressMaterials.Remove(element);
+			}
+			else throw new Exception("Элемент не найден");
+		}
 
         public DressMaterialViewModel GetElement(int id)
         {
-            for (int i = 0; i < source.DressMaterials.Count; ++i)
-            {
-                if (source.DressMaterials[i].Id == id)
-                {
-                    return new DressMaterialViewModel
-                    {
-                        Id = source.DressMaterials[i].Id,
-                        MaterialName = source.DressMaterials[i].MaterialName
-                    };
-                }
-            }
-            throw new Exception("Элемент не найден");
+			DressMaterial element = source.DressMaterials.FirstOrDefault(rec => rec.Id == id);
+			if (element != null)
+			{
+				return new DressMaterialViewModel
+				{
+					Id = element.Id,
+					DressId = element.DressId,
+					MaterialId = element.MaterialId,
+					Count = element.Count,
+					MaterialName = element.MaterialName
+				};
+			}
+			throw new Exception("Элемент не найден");
         }
 
         public List<DressMaterialViewModel> GetList()
         {
-            List<DressMaterialViewModel> result = new List<DressMaterialViewModel>();
-            for (int i = 0; i < source.DressMaterials.Count; ++i)
-            {
-                result.Add(new DressMaterialViewModel
-                {
-                    Id = source.DressMaterials[i].Id,
-                    DressId = source.DressMaterials[i].DressId,
-                    MaterialId = source.DressMaterials[i].MaterialId,
-                    Count = source.DressMaterials[i].Count,
-                    MaterialName = source.DressMaterials[i].MaterialName
-                });
-            }
-            return result;
+			List<DressMaterialViewModel> result = source.DressMaterials.Select(rec => new DressMaterialViewModel
+			{
+				Id = rec.Id,
+				DressId = rec.DressId,
+				MaterialId = rec.MaterialId,
+				Count = rec.Count,
+				MaterialName = rec.MaterialName
+			})
+			.ToList();
+			return result;
         }
 
         public void UpdElement(DressMaterialBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.DressMaterials.Count; ++i)
-            {
-                if (source.DressMaterials[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.DressMaterials[i].MaterialName == model.MaterialName &&
-                source.DressMaterials[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть материал с таким именем");
-                }
-            }
-            if (index == -1)
-            {
-                throw new Exception("Элемент не найден");
-            }
-            source.DressMaterials[index].MaterialName = model.MaterialName;
+			DressMaterial element = source.DressMaterials.FirstOrDefault(rec => rec.MaterialName == model.MaterialName && rec.Id != model.Id);
+			if (element != null)
+			{
+				throw new Exception("Уже есть материал с таким именем");
+			}
+			element = source.DressMaterials.FirstOrDefault(rec => rec.Id == model.Id);
+			if (element == null)
+			{
+				throw new Exception("Элемент не найден");
+			}
+			element.MaterialName = model.MaterialName;
         }
     }
 }

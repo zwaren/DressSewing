@@ -61,11 +61,11 @@ namespace DressSewingServiceImplement.Implemetations
         public List<DesignerViewModel> GetList()
         {
             List<DesignerViewModel> result = source.Designers.Select(rec => new DesignerViewModel
-            {
-                Id = rec.Id,
-                DesignerFIO = rec.DesignerFIO
-            })
-            .ToList();
+			{
+				Id = rec.Id,
+				DesignerFIO = rec.DesignerFIO
+			})
+			.ToList();
             return result;
         }
 
