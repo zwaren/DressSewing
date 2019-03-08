@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("DressSewing")]
+[assembly: AssemblyTitle("DressSewingServiceDAL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DressSewing")]
+[assembly: AssemblyProduct("DressSewingServiceDAL")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("b92bf93e-c2f2-454b-8dd5-2da4868d94e3")]
+[assembly: Guid("2c60ff58-7e7c-44a2-ad42-442a02d2ed11")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
