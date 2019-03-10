@@ -63,7 +63,45 @@ namespace DressSewingServiceImplement.Implemetations
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
-            element.DateImplement = DateTime.Now;
+			// смотрим по количеству компонентов на складах
+			var dressMaterials = source.DressMaterials.Where(rec => rec.DressId == element.DressId);
+			foreach (var dressMaterial in dressMaterials)
+			{
+				int countOnStores = source.StoreMaterials
+				.Where(rec => rec.MaterialId ==
+				dressMaterial.MaterialId)
+				.Sum(rec => rec.Count);
+				if (countOnStores < dressMaterial.Count * element.Count)
+				{
+					var MaterialName = source.Materials.FirstOrDefault(rec => rec.Id ==
+					dressMaterial.MaterialId);
+					throw new Exception("Не достаточно компонента " +
+					MaterialName?.MaterialName + " требуется " + (dressMaterial.Count * element.Count) +
+					", в наличии " + countOnStores);
+				}
+			}
+			// списываем
+			foreach (var dressMaterial in dressMaterials)
+			{
+				int countOnStores = dressMaterial.Count * element.Count;
+				var storeMaterials = source.StoreMaterials.Where(rec => rec.MaterialId
+				== dressMaterial.MaterialId);
+				foreach (var storeMaterial in storeMaterials)
+				{
+					// компонентов на одном слкаде может не хватать
+					if (storeMaterial.Count >= countOnStores)
+					{
+						storeMaterial.Count -= countOnStores;
+						break;
+					}
+					else
+					{
+						countOnStores -= storeMaterial.Count;
+						storeMaterial.Count = 0;
+					}
+				}
+			}
+			element.DateImplement = DateTime.Now;
             element.Status = RequestStatus.Выполняется;
         }
 

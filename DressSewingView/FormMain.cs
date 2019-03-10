@@ -135,5 +135,17 @@ namespace DressSewingView
         {
             LoadData();
         }
-    }
+
+		private void складыToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var form = Container.Resolve<FormStores>();
+			form.ShowDialog();
+		}
+
+		private void пополнитьСкладToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			var form = Container.Resolve<FormPutInStore>();
+			form.ShowDialog();
+		}
+	}
 }

@@ -76,11 +76,11 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unity.Abstractions, Version=4.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.9.5\lib\net46\Unity.Abstractions.dll</HintPath>
+    <Reference Include="Unity.Abstractions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.9.7\lib\net46\Unity.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Container, Version=5.9.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.9.5\lib\net46\Unity.Container.dll</HintPath>
+    <Reference Include="Unity.Container, Version=5.9.7.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.9.7\lib\net46\Unity.Container.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +138,12 @@
     <Compile Include="FormMaterrial.Designer.cs">
       <DependentUpon>FormMaterrial.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPutInStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPutInStore.Designer.cs">
+      <DependentUpon>FormPutInStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,8 +191,14 @@
     <EmbeddedResource Include="FormMaterrial.resx">
       <DependentUpon>FormMaterrial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPutInStore.resx">
+      <DependentUpon>FormPutInStore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStore.resx">
       <DependentUpon>FormStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStores.resx">
+      <DependentUpon>FormStores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -207,6 +219,8 @@
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductComponentViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.StoreMaterialViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.StoreViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

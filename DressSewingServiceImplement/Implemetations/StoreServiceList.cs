@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceImplement.Implemetations
 {
-    class StoreServiceList : IStoreService
+    public class StoreServiceList : IStoreService
     {
         private DataListSingleton source;
         public StoreServiceList()
