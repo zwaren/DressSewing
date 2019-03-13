@@ -4,6 +4,7 @@ using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
             context.Requests.Add(new Request
             {
                 DesignerId = model.DesignerId,
-                ProductId = model.ProductId,
+                DressId = model.DressId,
                 DateCreate = DateTime.Now,
                 Count = model.Count,
                 Sum = model.Sum,
@@ -54,7 +55,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
             {
                 Id = rec.Id,
                 DesignerId = rec.DesignerId,
-                ProductId = rec.ProductId,
+                DressId = rec.DressId,
                 DateCreate = SqlFunctions.DateName("dd", rec.DateCreate) + " " +
                         SqlFunctions.DateName("mm", rec.DateCreate) + " " +
                         SqlFunctions.DateName("yyyy", rec.DateCreate),
@@ -66,7 +67,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 Count = rec.Count,
                 Sum = rec.Sum,
                 DesignerFIO = rec.Designer.DesignerFIO,
-                ProductName = rec.Product.ProductName
+                DressName = rec.Dress.DressName
             })
             .ToList();
             return result;
@@ -89,7 +90,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
 
         public void PutMaterialInStore(StoreMaterialBindingModel model)
         {
-            StoreMaterial element = context.StoreMaterials.FirstOrDefault(rec => rec.StoreId == model.StoreId && rec.ComponentId == model.ComponentId);
+            StoreMaterial element = context.StoreMaterials.FirstOrDefault(rec => rec.StoreId == model.StoreId && rec.MaterialId == model.MaterialId);
             if (element != null)
             {
                 element.Count += model.Count;
@@ -99,7 +100,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 context.StoreMaterials.Add(new StoreMaterial
                 {
                     StoreId = model.StoreId,
-                    ComponentId = model.ComponentId,
+                    MaterialId = model.MaterialId,
                     Count = model.Count
                 });
             }
@@ -121,12 +122,12 @@ namespace DressSewingServiceImplementDataBase.Implementations
                     {
                         throw new Exception("Заказ не в статусе \"Принят\"");
                     }
-                    var dressMaterials = context.DressMaterials.Include(rec => rec.Component).Where(rec => rec.ProductId == element.ProductId);
+                    var dressMaterials = context.DressMaterials.Include(rec => rec.Material).Where(rec => rec.DressId == element.DressId);
                     // списываем
                     foreach (var dressMaterial in dressMaterials)
                     {
                         int countOnStores = dressMaterial.Count * element.Count;
-                        var StoreMaterials = context.StoreMaterials.Where(rec => rec.ComponentId == dressMaterial.ComponentId);
+                        var StoreMaterials = context.StoreMaterials.Where(rec => rec.MaterialId == dressMaterial.MaterialId);
                         foreach (var StoreMaterial in StoreMaterials)
                         {
                             // компонентов на одном слкаде может не хватать
@@ -146,7 +147,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
                         }
                         if (countOnStores > 0)
                         {
-                            throw new Exception("Не достаточно компонента " + dressMaterial.Component.ComponentName + " требуется " + dressMaterial.Count + ", не хватает " + countOnStores);
+                            throw new Exception("Не достаточно компонента " + dressMaterial.Material.MaterialName + " требуется " + dressMaterial.Count + ", не хватает " + countOnStores);
                         }
                     }
                     element.DateImplement = DateTime.Now;
