@@ -122,7 +122,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
                     {
                         throw new Exception("Заказ не в статусе \"Принят\"");
                     }
-                    var dressMaterials = context.DressMaterials.Include(rec => rec.Material).Where(rec => rec.DressId == element.DressId);
+                    var dressMaterials = context.DressMaterials.Where(rec => rec.DressId == element.DressId);
                     // списываем
                     foreach (var dressMaterial in dressMaterials)
                     {
