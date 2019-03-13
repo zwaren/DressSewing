@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DressSewingServiceImplementDataBase
+namespace DressSewingServiceImplementDataBase.Implementations
 {
-    public class Class1
+    class StoreServiceDB
     {
     }
 }
