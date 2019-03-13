@@ -32,7 +32,9 @@ namespace DressSewingView
             currentContainer.RegisterType<IMaterialService, MaterialServiceList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IDressService, DressServiceList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IMainService, MainServiceList>(new HierarchicalLifetimeManager());
-            return currentContainer;
+			currentContainer.RegisterType<IStoreService, StoreServiceList>(new HierarchicalLifetimeManager());
+
+			return currentContainer;
         }
     }
 }

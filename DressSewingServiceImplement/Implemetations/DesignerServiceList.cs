@@ -21,18 +21,12 @@ namespace DressSewingServiceImplement.Implemetations
 
         public void AddElement(DesignerBindingModel model)
         {
-            int maxId = 0;
-            for (int i = 0; i < source.Designers.Count; ++i)
+            Designer element = source.Designers.FirstOrDefault(rec => rec.DesignerFIO == model.DesignerFIO);
+            if (element != null)
             {
-                if (source.Designers[i].Id > maxId)
-                {
-                    maxId = source.Designers[i].Id;
-                }
-                if (source.Designers[i].DesignerFIO == model.DesignerFIO)
-                {
-                    throw new Exception("Уже есть клиент с таким ФИО");
-                }
+                throw new Exception("Уже есть клиент с таким ФИО");
             }
+            int maxId = source.Designers.Count > 0 ? source.Designers.Max(rec => rec.Id) : 0;
             source.Designers.Add(new Designer
             {
                 Id = maxId + 1,
@@ -42,67 +36,52 @@ namespace DressSewingServiceImplement.Implemetations
 
         public void DelElement(int id)
         {
-            for (int i = 0; i < source.Designers.Count; ++i)
+            Designer element = source.Designers.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
             {
-                if (source.Designers[i].Id == id)
-                {
-                    source.Designers.RemoveAt(i);
-                    return;
-                }
+                source.Designers.Remove(element);
             }
-            throw new Exception("Элемент не найден");
+            else throw new Exception("Элемент не найден");
         }
 
         public DesignerViewModel GetElement(int id)
         {
-            for (int i = 0; i < source.Designers.Count; ++i)
+            Designer element = source.Designers.FirstOrDefault(rec => rec.Id == id);
+            if (element != null)
             {
-                if (source.Designers[i].Id == id)
+                return new DesignerViewModel
                 {
-                    return new DesignerViewModel
-                    {
-                        Id = source.Designers[i].Id,
-                        DesignerFIO = source.Designers[i].DesignerFIO
-                    };
-                }
+                    Id = element.Id,
+                    DesignerFIO = element.DesignerFIO
+                };
             }
             throw new Exception("Элемент не найден");
         }
 
         public List<DesignerViewModel> GetList()
         {
-            List<DesignerViewModel> result = new List<DesignerViewModel>();
-            for (int i = 0; i < source.Designers.Count; ++i)
-            {
-                result.Add(new DesignerViewModel
-                {
-                    Id = source.Designers[i].Id,
-                    DesignerFIO = source.Designers[i].DesignerFIO
-                });
-            }
+            List<DesignerViewModel> result = source.Designers.Select(rec => new DesignerViewModel
+			{
+				Id = rec.Id,
+				DesignerFIO = rec.DesignerFIO
+			})
+			.ToList();
             return result;
         }
 
         public void UpdElement(DesignerBindingModel model)
         {
-            int index = -1;
-            for (int i = 0; i < source.Designers.Count; ++i)
+            Designer element = source.Designers.FirstOrDefault(rec => rec.DesignerFIO == model.DesignerFIO && rec.Id != model.Id);
+            if (element != null)
             {
-                if (source.Designers[i].Id == model.Id)
-                {
-                    index = i;
-                }
-                if (source.Designers[i].DesignerFIO == model.DesignerFIO &&
-                source.Designers[i].Id != model.Id)
-                {
-                    throw new Exception("Уже есть клиент с таким ФИО");
-                }
+                throw new Exception("Уже есть клиент с таким ФИО");
             }
-            if (index == -1)
+            element = source.Designers.FirstOrDefault(rec => rec.Id == model.Id);
+            if (element == null)
             {
                 throw new Exception("Элемент не найден");
             }
-            source.Designers[index].DesignerFIO = model.DesignerFIO;
+            element.DesignerFIO = model.DesignerFIO;
         }
     }
 }
