@@ -10,7 +10,7 @@ using DressSewingServiceDAL.ViewModels;
 
 namespace DressSewingServiceImplementDataBase.Implementations
 {
-	class MaterialServiceDB : IMaterialService
+	public class MaterialServiceDB : IMaterialService
 	{
 		private AbstractDbContext context;
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceImplementDataBase.Implementations
 {
-    class DesignerServiceDB : IDesignerService
+    public class DesignerServiceDB : IDesignerService
     {
         private AbstractDbContext context;
 

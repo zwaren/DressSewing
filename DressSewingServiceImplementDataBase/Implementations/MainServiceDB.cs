@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DressSewingServiceImplementDataBase.Implementations
 {
-    class MainServiceDB : IMainService
+	public class MainServiceDB : IMainService
     {
         private AbstractDbContext context;
 
