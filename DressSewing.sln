@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingServiceImplement
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingView", "DressSewingView\DressSewingView.csproj", "{D6C585E8-A658-4AEB-B808-CA068036F1EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingServiceImplementDataBase", "DressSewingServiceImplementDataBase\DressSewingServiceImplementDataBase.csproj", "{AD780E80-8EE5-4F33-AC32-04459CA98665}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D6C585E8-A658-4AEB-B808-CA068036F1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6C585E8-A658-4AEB-B808-CA068036F1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6C585E8-A658-4AEB-B808-CA068036F1EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
