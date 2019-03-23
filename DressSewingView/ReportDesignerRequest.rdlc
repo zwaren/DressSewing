@@ -57,18 +57,18 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>4.81951cm</Width>
+                  <Width>5.56916cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.81951cm</Width>
+                  <Width>5.56916cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.81951cm</Width>
+                  <Width>5.56916cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.81708cm</Height>
+                  <Height>1.28791cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -79,7 +79,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>Designer Name</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -109,7 +109,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>Date Create</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -163,25 +163,25 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>1.81708cm</Height>
+                  <Height>1.28791cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox2">
+                        <Textbox Name="DesignerName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!DesignerName.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <rd:DefaultName>DesignerName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -197,21 +197,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox4">
+                        <Textbox Name="DateCreate">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!DateCreate.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox4</rd:DefaultName>
+                          <rd:DefaultName>DateCreate</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -276,10 +276,11 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <Top>3.50958cm</Top>
-            <Left>1.63724cm</Left>
-            <Height>3.63417cm</Height>
-            <Width>14.45854cm</Width>
+            <DataSetName>DataSetRequests</DataSetName>
+            <Top>2.63646cm</Top>
+            <Left>0.55245cm</Left>
+            <Height>2.57583cm</Height>
+            <Width>16.70749cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -309,6 +310,40 @@
             <Height>1.15562cm</Height>
             <Width>17.96521cm</Width>
             <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!ReportParameterPeriod.Value</Value>
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox8</rd:DefaultName>
+            <Top>1.15562cm</Top>
+            <Height>1.04979cm</Height>
+            <Width>17.96521cm</Width>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
