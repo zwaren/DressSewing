@@ -163,6 +163,12 @@
     <Compile Include="FormStores.Designer.cs">
       <DependentUpon>FormStores.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormStoresLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStoresLoad.Designer.cs">
+      <DependentUpon>FormStoresLoad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDesigner.resx">
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStores.resx">
       <DependentUpon>FormStores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStoresLoad.resx">
+      <DependentUpon>FormStoresLoad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
