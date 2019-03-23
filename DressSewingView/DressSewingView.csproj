@@ -226,9 +226,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReportDesignerRequest.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.BindingModels.ProductBindingModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ClientViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DesignerRequestsModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressMaterialViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.MaterialViewModel.datasource" />
