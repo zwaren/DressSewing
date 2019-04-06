@@ -40,9 +40,9 @@
             // 
             this.buttonSaveToExcel.Location = new System.Drawing.Point(13, 13);
             this.buttonSaveToExcel.Name = "buttonSaveToExcel";
-            this.buttonSaveToExcel.Size = new System.Drawing.Size(75, 23);
+            this.buttonSaveToExcel.Size = new System.Drawing.Size(145, 23);
             this.buttonSaveToExcel.TabIndex = 0;
-            this.buttonSaveToExcel.Text = "button1";
+            this.buttonSaveToExcel.Text = "Сохранить в Excel";
             this.buttonSaveToExcel.UseVisualStyleBackColor = true;
             this.buttonSaveToExcel.Click += new System.EventHandler(this.buttonSaveToExcel_Click);
             // 
@@ -81,7 +81,7 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.buttonSaveToExcel);
             this.Name = "FormStoresLoad";
-            this.Text = "FormStoresLoad";
+            this.Text = "Загруженность складов";
             this.Load += new System.EventHandler(this.FormStoresLoad_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

@@ -89,7 +89,7 @@
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormDesignerRequest";
-            this.Text = "FormDesignerRequest";
+            this.Text = "Заказы клиентов";
             this.Load += new System.EventHandler(this.FormDesignerRequest_Load);
             this.ResumeLayout(false);
 
