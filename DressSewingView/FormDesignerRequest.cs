@@ -83,9 +83,6 @@ namespace DressSewingView
 
         private void FormDesignerRequest_Load(object sender, EventArgs e)
         {
-
-            this.reportViewer.RefreshReport();
-            this.reportViewer.RefreshReport();
         }
     }
 }

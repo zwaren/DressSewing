@@ -57,6 +57,7 @@
             this.buttonMake.TabIndex = 2;
             this.buttonMake.Text = "Сформировать";
             this.buttonMake.UseVisualStyleBackColor = true;
+            this.buttonMake.Click += new System.EventHandler(this.buttonMake_Click);
             // 
             // buttonToPdf
             // 
@@ -66,6 +67,7 @@
             this.buttonToPdf.TabIndex = 3;
             this.buttonToPdf.Text = "В pdf";
             this.buttonToPdf.UseVisualStyleBackColor = true;
+            this.buttonToPdf.Click += new System.EventHandler(this.buttonToPdf_Click);
             // 
             // reportViewer
             // 
@@ -87,7 +89,7 @@
             this.Controls.Add(this.dateTimePickerTo);
             this.Controls.Add(this.dateTimePickerFrom);
             this.Name = "FormDesignerRequest";
-            this.Text = "FormDesignerRequest";
+            this.Text = "Заказы клиентов";
             this.Load += new System.EventHandler(this.FormDesignerRequest_Load);
             this.ResumeLayout(false);
 
