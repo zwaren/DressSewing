@@ -77,7 +77,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.28791cm</Height>
+                  <Height>0.91749cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -262,7 +262,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>1.28791cm</Height>
+                  <Height>0.94395cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -471,7 +471,7 @@
             <DataSetName>DataSetRequests</DataSetName>
             <Top>2.63646cm</Top>
             <Left>0.55245cm</Left>
-            <Height>2.57582cm</Height>
+            <Height>1.86145cm</Height>
             <Width>17.41276cm</Width>
             <Style>
               <Border>
@@ -554,7 +554,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>Итого:</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -562,7 +562,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox13</rd:DefaultName>
-            <Top>5.21228cm</Top>
+            <Top>4.4979cm</Top>
             <Left>9.83021cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
@@ -577,22 +577,22 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox14">
+          <Textbox Name="Textbox6">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value />
+                    <Value>[Sum(#Sum)]</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
                 <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox14</rd:DefaultName>
-            <Top>5.21228cm</Top>
+            <rd:DefaultName>Textbox6</rd:DefaultName>
+            <Top>4.4979cm</Top>
             <Left>12.33021cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
