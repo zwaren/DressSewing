@@ -80,9 +80,5 @@ namespace DressSewingView
                 }
             }
         }
-
-        private void FormDesignerRequest_Load(object sender, EventArgs e)
-        {
-        }
     }
 }
