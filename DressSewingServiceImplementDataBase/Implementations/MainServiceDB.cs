@@ -49,6 +49,18 @@ namespace DressSewingServiceImplementDataBase.Implementations
             context.SaveChanges();
         }
 
+        public List<RequestViewModel> GetFreeRequests()
+        {
+            List<RequestViewModel> result = context.Requests
+                .Where(x => x.Status == RequestStatus.Принят || x.Status == RequestStatus.НедостаточноРесурсов)
+                .Select(rec => new RequestViewModel
+                {
+                    Id = rec.Id
+                })
+                .ToList();
+            return result;
+        }
+
         public List<RequestViewModel> GetList()
         {
             List<RequestViewModel> result = context.Requests.Select(rec => new RequestViewModel

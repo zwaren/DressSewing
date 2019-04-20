@@ -20,6 +20,9 @@ namespace DressSewingServiceDAL.BindingModels
         public int DressId { get; set; }
 
         [DataMember]
+        public int? TailorId { get; set; }
+
+        [DataMember]
         public int Count { get; set; }
 
         [DataMember]

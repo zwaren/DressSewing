@@ -50,12 +50,14 @@
     <Compile Include="BindingModels\DressMaterialBindingModel.cs" />
     <Compile Include="BindingModels\StoreBindingModel.cs" />
     <Compile Include="BindingModels\StoreMaterialBindingModel.cs" />
+    <Compile Include="BindingModels\TailorBindingModel.cs" />
     <Compile Include="Interfaces\IDesignerService.cs" />
     <Compile Include="Interfaces\IMaterialService.cs" />
     <Compile Include="Interfaces\IMainService.cs" />
     <Compile Include="Interfaces\IDressService.cs" />
     <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="Interfaces\IStoreService.cs" />
+    <Compile Include="Interfaces\ITailorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DesignerRequestsModel.cs" />
     <Compile Include="ViewModels\DesignerViewModel.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="ViewModels\StoreMaterialViewModel.cs" />
     <Compile Include="ViewModels\StoresLoadViewModel.cs" />
     <Compile Include="ViewModels\StoreViewModel.cs" />
+    <Compile Include="ViewModels\TailorViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DressSewingModel\DressSewingModel.csproj">

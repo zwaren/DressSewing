@@ -66,6 +66,7 @@
     <Compile Include="Implementations\MaterialServiceDB.cs" />
     <Compile Include="Implementations\ReportServiceDB.cs" />
     <Compile Include="Implementations\StoreServiceDB.cs" />
+    <Compile Include="Implementations\TailorServiceDB.cs" />
     <Compile Include="Migrations\201903131359154_FirstMigration.cs" />
     <Compile Include="Migrations\201903131359154_FirstMigration.Designer.cs">
       <DependentUpon>201903131359154_FirstMigration.cs</DependentUpon>
