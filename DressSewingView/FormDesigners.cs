@@ -7,23 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormDesigners : Form
     {
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
-
-		private readonly IDesignerService service;
-
-		public FormDesigners(IDesignerService service)
+		public FormDesigners()
 		{
 			InitializeComponent();
-			this.service = service;
 		}
 
 		private void FormDesigners_Load(object sender, EventArgs e)
@@ -35,8 +29,8 @@ namespace DressSewingView
 		{
 			try
 			{
-				List<DesignerViewModel> list = service.GetList();
-				if (list != null)
+				List<DesignerViewModel> list = APIClient.GetRequest<List<DesignerViewModel>>("api/Designer/GetList");
+                if (list != null)
 				{
 					dataGridView.DataSource = list;
 					dataGridView.Columns[0].Visible = false;
@@ -53,19 +47,21 @@ namespace DressSewingView
 
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormDesigner>();
-			if (form.ShowDialog() == DialogResult.OK)
-			{
-				LoadData();
-			}
-		}
+            var form = new FormDesigner();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadData();
+            }
+        }
 
 		private void buttonUpd_Click(object sender, EventArgs e)
 		{
 			if (dataGridView.SelectedRows.Count == 1)
 			{
-				var form = Container.Resolve<FormDesigner>();
-				form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+				var form = new FormDesigner
+                {
+                    Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value)
+                };
 				if (form.ShowDialog() == DialogResult.OK)
 				{
 					LoadData();
@@ -75,26 +71,23 @@ namespace DressSewingView
 
 		private void buttonDel_Click(object sender, EventArgs e)
 		{
-			if (dataGridView.SelectedRows.Count == 1)
-			{
-				if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
-				MessageBoxIcon.Question) == DialogResult.Yes)
-				{
-					int id =
-					Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-					try
-					{
-						service.DelElement(id);
-					}
-					catch (Exception ex)
-					{
-						MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-						MessageBoxIcon.Error);
-					}
-					LoadData();
-				}
-			}
-		}
+            if (dataGridView.SelectedRows.Count == 1)
+            {
+                if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                    try
+                    {
+                        APIClient.PostRequest<DesignerBindingModel, bool>("api/Designer/DelElement", new DesignerBindingModel { Id = id });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    LoadData();
+                }
+            }
+        }
 
 		private void buttonRef_Click(object sender, EventArgs e)
 		{

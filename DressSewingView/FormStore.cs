@@ -10,25 +10,18 @@ using System.Windows.Forms;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormStore : Form
     {
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
-
 		public int Id { set { id = value; } }
-
-		private readonly IStoreService service;
-
+        
 		private int? id;
 
-		public FormStore(IStoreService service)
+		public FormStore()
         {
             InitializeComponent();
-			this.service = service;
 		}
 
 		private void FormStore_Load(object sender, EventArgs e)
@@ -37,11 +30,11 @@ namespace DressSewingView
 			{
 				try
 				{
-					StoreViewModel view = service.GetElement(id.Value);
-					if (view != null)
+                    StoreViewModel client = APIClient.GetRequest<StoreViewModel>("api/Store/Get/" + id.Value);
+                    if (client != null)
 					{
-						textBoxName.Text = view.StoreName;
-						dataGridView.DataSource = view.StoreMaterials;
+						textBoxName.Text = client.StoreName;
+						dataGridView.DataSource = client.StoreMaterials;
 						dataGridView.Columns[0].Visible = false;
 						dataGridView.Columns[1].Visible = false;
 						dataGridView.Columns[2].Visible = false;
@@ -69,18 +62,18 @@ namespace DressSewingView
 			{
 				if (id.HasValue)
 				{
-					service.UpdElement(new StoreBindingModel
-					{
-						Id = id.Value,
-						StoreName = textBoxName.Text
-					});
+                    APIClient.PostRequest<StoreBindingModel, bool>("api/Store/UpdElement", new StoreBindingModel
+                    {
+                        Id = id.Value,
+                        StoreName = textBoxName.Text
+                    });
 				}
 				else
 				{
-					service.AddElement(new StoreBindingModel
-					{
-						StoreName = textBoxName.Text
-					});
+                    APIClient.PostRequest<StoreBindingModel, bool>("api/Store/AddElement", new StoreBindingModel
+                    {
+                        StoreName = textBoxName.Text
+                    });
 				}
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение",
 				MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -106,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIClient.cs" />
     <Compile Include="FormDesigner.cs">
       <SubType>Form</SubType>
     </Compile>

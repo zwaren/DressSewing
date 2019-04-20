@@ -9,27 +9,20 @@ using System.Windows.Forms;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormDress : Form
     {
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
-
 		public int Id { set { id = value; } }
-
-		private readonly IDressService service;
-
+        
 		private int? id;
 
 		private List<DressMaterialViewModel> DressMaterials;
 
-		public FormDress(IDressService service)
+		public FormDress()
         {
             InitializeComponent();
-			this.service = service;
 		}
 
 		private void FormDress_Load(object sender, EventArgs e)
@@ -38,7 +31,7 @@ namespace DressSewingView
 			{
 				try
 				{
-					DressViewModel view = service.GetElement(id.Value);
+                    DressViewModel view = APIClient.GetRequest<DressViewModel>("api/Designer/Get/" + id.Value);
 					if (view != null)
 					{
 						textBoxName.Text = view.DressName;
@@ -84,7 +77,7 @@ namespace DressSewingView
 
 		private void buttonAdd_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormDressMaterial>();
+			var form = new FormDressMaterial();
 			if (form.ShowDialog() == DialogResult.OK)
 			{
 				if (form.Model != null)
@@ -103,9 +96,8 @@ namespace DressSewingView
 		{
 			if (dataGridView.SelectedRows.Count == 1)
 			{
-				var form = Container.Resolve<FormDressMaterial>();
-				form.Model =
-				DressMaterials[dataGridView.SelectedRows[0].Cells[0].RowIndex];
+				var form = new FormDressMaterial();
+				form.Model = DressMaterials[dataGridView.SelectedRows[0].Cells[0].RowIndex];
 				if (form.ShowDialog() == DialogResult.OK)
 				{
 					DressMaterials[dataGridView.SelectedRows[0].Cells[0].RowIndex] = form.Model;
@@ -176,22 +168,22 @@ namespace DressSewingView
 				}
 				if (id.HasValue)
 				{
-					service.UpdElement(new DressBindingModel
-					{
-						Id = id.Value,
-						DressName = textBoxName.Text,
-						Price = Convert.ToInt32(textBoxPrice.Text),
-						DressMaterials = DressMaterialBM
-					});
+                    APIClient.PostRequest<DressBindingModel, bool>("api/Dress/UpdElement", new DressBindingModel
+                    {
+                        Id = id.Value,
+                        DressName = textBoxName.Text,
+                        Price = Convert.ToInt32(textBoxPrice.Text),
+                        DressMaterials = DressMaterialBM
+                    });
 				}
 				else
 				{
-					service.AddElement(new DressBindingModel
-					{
-						DressName = textBoxName.Text,
-						Price = Convert.ToInt32(textBoxPrice.Text),
-						DressMaterials = DressMaterialBM
-					});
+                    APIClient.PostRequest<DressBindingModel, bool>("api/Dress/AddElement", new DressBindingModel
+                    {
+                        DressName = textBoxName.Text,
+                        Price = Convert.ToInt32(textBoxPrice.Text),
+                        DressMaterials = DressMaterialBM
+                    });
 				}
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение",
 				MessageBoxButtons.OK, MessageBoxIcon.Information);

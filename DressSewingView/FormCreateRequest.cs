@@ -10,42 +10,30 @@ using System.Windows.Forms;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormCreateRequest : Form
     {
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
 
-		private readonly IDesignerService serviceC;
-
-		private readonly IDressService serviceP;
-
-		private readonly IMainService serviceM;
-
-		public FormCreateRequest(IDesignerService serviceC, IDressService serviceP, IMainService serviceM)
+		public FormCreateRequest()
 		{
 			InitializeComponent();
-			this.serviceC = serviceC;
-			this.serviceP = serviceP;
-			this.serviceM = serviceM;
 		}
 
 		private void FormCreateOrder_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				List<DesignerViewModel> listC = serviceC.GetList();
-				if (listC != null)
+                List<DesignerViewModel> listC = APIClient.GetRequest<List<DesignerViewModel>>("api/Designer/GetList");
+                if (listC != null)
 				{
 					comboBoxDesigner.DisplayMember = "DesignerFIO";
 					comboBoxDesigner.ValueMember = "Id";
 					comboBoxDesigner.DataSource = listC;
 					comboBoxDesigner.SelectedItem = null;
 				}
-				List<DressViewModel> listP = serviceP.GetList();
+                List<DressViewModel> listP = APIClient.GetRequest<List<DressViewModel>>("api/Dress/GetList");
 				if (listP != null)
 				{
 					comboBoxDress.DisplayMember = "DressName";
@@ -69,7 +57,7 @@ namespace DressSewingView
 				try
 				{
 					int id = Convert.ToInt32(comboBoxDress.SelectedValue);
-					DressViewModel Dress = serviceP.GetElement(id);
+					DressViewModel Dress = APIClient.GetRequest<DressViewModel>("api/Dress/Get/" + id); ;
 					int count = Convert.ToInt32(textBoxCount.Text);
 					textBoxSum.Text = (count * Dress.Price).ToString();
 				}
@@ -113,7 +101,7 @@ namespace DressSewingView
 			}
 			try
 			{
-				serviceM.CreateRequest(new RequestBindingModel
+                APIClient.PostRequest<RequestBindingModel, bool>("api/Main/CreateRequest", new RequestBindingModel
 				{
 					DesignerId = Convert.ToInt32(comboBoxDesigner.SelectedValue),
 					DressId = Convert.ToInt32(comboBoxDress.SelectedValue),

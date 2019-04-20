@@ -1,5 +1,6 @@
 ﻿using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
+using DressSewingServiceDAL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,19 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormStoresLoad : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-        private readonly IReportService service;
-        public FormStoresLoad(IReportService service)
+        public FormStoresLoad()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void buttonSaveToExcel_Click(object sender, EventArgs e)
@@ -34,7 +30,7 @@ namespace DressSewingView
             {
                 try
                 {
-                    service.SaveStoresLoad(new ReportBindingModel
+                    APIClient.PostRequest<ReportBindingModel, bool>("api/Report/SaveStoresLoad", new ReportBindingModel
                     {
                         FileName = sfd.FileName
                     });
@@ -51,7 +47,7 @@ namespace DressSewingView
         {
             try
             {
-                var dict = service.GetStoresLoad();
+                List<StoresLoadViewModel> dict = APIClient.GetRequest<List<StoresLoadViewModel>>("api/Report/GetStoresLoad");
                 if (dict != null)
                 {
                     dataGridView.Rows.Clear();

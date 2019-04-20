@@ -1,4 +1,5 @@
-﻿using DressSewingServiceDAL.Interfaces;
+﻿using DressSewingServiceDAL.BindingModels;
+using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -9,28 +10,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormDresses : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly IDressService service;
-
-        public FormDresses(IDressService service)
+        public FormDresses()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void LoadData()
         {
             try
             {
-                List<DressViewModel> list = service.GetList();
+                List<DressViewModel> list = APIClient.GetRequest<List<DressViewModel>>("api/Dress/GetList");
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -54,7 +48,7 @@ namespace DressSewingView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormDress>();
+            var form = new FormDress();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -65,8 +59,10 @@ namespace DressSewingView
         {
             if (dataGridView.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormDress>();
-                form.Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
+                var form = new FormDress
+                {
+                    Id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value)
+                };
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadData();
@@ -85,7 +81,7 @@ namespace DressSewingView
                     Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        service.DelElement(id);
+                        APIClient.PostRequest<DressBindingModel, bool>("api/Dress/DelElement", new DressBindingModel { Id = id });
                     }
                     catch (Exception ex)
                     {

@@ -8,36 +8,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormDressMaterial : Form
     {
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
-
 		public DressMaterialViewModel Model
 		{
 			set { model = value; }
 			get { return model; }
 		}
-
-		private readonly IMaterialService service;
-
+        
 		private DressMaterialViewModel model;
 
-		public FormDressMaterial(IMaterialService service)
+		public FormDressMaterial()
 		{
 			InitializeComponent();
-			this.service = service;
 		}
 
 		private void FormDressMaterial_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				List<MaterialViewModel> list = service.GetList();
+                List<MaterialViewModel> list = APIClient.GetRequest<List<MaterialViewModel>>("api/Material/GetList");
 				if (list != null)
 				{
 					comboBoxMaterial.DisplayMember = "MaterialName";
