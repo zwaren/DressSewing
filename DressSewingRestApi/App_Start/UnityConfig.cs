@@ -50,6 +50,7 @@ namespace DressSewingRestApi
             container.RegisterType<IStoreService, StoreServiceDB>(new HierarchicalLifetimeManager());
             container.RegisterType<IMainService, MainServiceDB>(new HierarchicalLifetimeManager());
             container.RegisterType<IReportService, ReportServiceDB>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITailorService, TailorServiceDB>(new HierarchicalLifetimeManager());
         }
     }
 }

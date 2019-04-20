@@ -14,7 +14,7 @@ namespace DressSewingModel
 
         public int DressId { get; set; }
 
-        public int TailorId { get; set; }
+        public int? TailorId { get; set; }
 
         public int Count { get; set; }
 

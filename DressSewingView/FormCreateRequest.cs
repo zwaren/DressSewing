@@ -106,7 +106,7 @@ namespace DressSewingView
 					DesignerId = Convert.ToInt32(comboBoxDesigner.SelectedValue),
 					DressId = Convert.ToInt32(comboBoxDress.SelectedValue),
 					Count = Convert.ToInt32(textBoxCount.Text),
-					Sum = Convert.ToInt32(textBoxSum.Text)
+					Sum = Convert.ToDecimal(textBoxSum.Text)
 				});
 				MessageBox.Show("Сохранение прошло успешно", "Сообщение",
 				MessageBoxButtons.OK, MessageBoxIcon.Information);

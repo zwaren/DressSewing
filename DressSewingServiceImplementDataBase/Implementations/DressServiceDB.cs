@@ -79,7 +79,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
 					{
 						// удаяем записи по компонентам при удалении изделия
 						context.DressMaterials.RemoveRange(context.DressMaterials.Where(rec =>
-						rec.DressId == id));
+						    rec.DressId == id));
 						context.Dresses.Remove(element);
 						context.SaveChanges();
 					}
