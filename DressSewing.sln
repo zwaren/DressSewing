@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingView", "DressSew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingServiceImplementDataBase", "DressSewingServiceImplementDataBase\DressSewingServiceImplementDataBase.csproj", "{AD780E80-8EE5-4F33-AC32-04459CA98665}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingRestApi", "DressSewingRestApi\DressSewingRestApi.csproj", "{C731CAF2-DB0F-4E24-A047-EEAA12BE941E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD780E80-8EE5-4F33-AC32-04459CA98665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C731CAF2-DB0F-4E24-A047-EEAA12BE941E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C731CAF2-DB0F-4E24-A047-EEAA12BE941E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C731CAF2-DB0F-4E24-A047-EEAA12BE941E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C731CAF2-DB0F-4E24-A047-EEAA12BE941E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

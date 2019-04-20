@@ -10,29 +10,21 @@ using System.Windows.Forms;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormMain : Form
     {
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
-
-		private readonly IMainService service;
-        private readonly IReportService reportService;
-
-        public FormMain(IMainService service, IReportService reportService)
+        public FormMain()
 		{
 			InitializeComponent();
-			this.service = service;
-            this.reportService = reportService;
         }
+
         private void LoadData()
 		{
             try
             {
-                List<RequestViewModel> list = service.GetList();
+                List<RequestViewModel> list = APIClient.GetRequest<List<RequestViewModel>>("api/Main/GetList");
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
@@ -51,25 +43,25 @@ namespace DressSewingView
 
 		private void клиентыToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormDesigners>();
+			var form = new FormDesigners();
 			form.ShowDialog();
 		}
 
 		private void компонентыToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormMaterials>();
+			var form = new FormMaterials();
 			form.ShowDialog();
 		}
 
 		private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormDresses>();
+			var form = new FormDresses();
 			form.ShowDialog();
 		}
 
 		private void buttonCreateOrder_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormCreateRequest>();
+			var form = new FormCreateRequest();
 			form.ShowDialog();
 			LoadData();
 		}
@@ -81,8 +73,11 @@ namespace DressSewingView
 				int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 				try
 				{
-					service.TakeRequestInWork(new RequestBindingModel { Id = id });
-					LoadData();
+                    APIClient.PostRequest<RequestBindingModel, bool>("api/Main/TakeRequestInWork", new RequestBindingModel
+                    {
+                        Id = id
+                    });
+                    LoadData();
 				}
 				catch (Exception ex)
 				{
@@ -99,8 +94,11 @@ namespace DressSewingView
 				int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 				try
 				{
-					service.FinishRequest(new RequestBindingModel { Id = id });
-					LoadData();
+                    APIClient.PostRequest<RequestBindingModel, bool>("api/Main/FinishRequest", new RequestBindingModel
+                    {
+                        Id = id
+                    });
+                    LoadData();
 				}
 				catch (Exception ex)
 				{
@@ -117,7 +115,10 @@ namespace DressSewingView
 				int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
 				try
 				{
-					service.PayRequest(new RequestBindingModel { Id = id });
+                    APIClient.PostRequest<RequestBindingModel, bool>("api/Main/PayRequest", new RequestBindingModel
+                    {
+                        Id = id
+                    });
 					LoadData();
 				}
 				catch (Exception ex)
@@ -140,13 +141,13 @@ namespace DressSewingView
 
 		private void складыToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormStores>();
+			var form = new FormStores();
 			form.ShowDialog();
 		}
 
 		private void пополнитьСкладToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			var form = Container.Resolve<FormPutInStore>();
+			var form = new FormPutInStore();
 			form.ShowDialog();
 		}
 
@@ -160,7 +161,7 @@ namespace DressSewingView
             {
                 try
                 {
-                    reportService.SaveDressPrice(new ReportBindingModel
+                    APIClient.PostRequest<ReportBindingModel, bool>("api/Report/SaveProductPrice", new ReportBindingModel
                     {
                         FileName = sfd.FileName
                     });
@@ -175,13 +176,13 @@ namespace DressSewingView
 
         private void загруженностьСкладовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormStoresLoad>();
+            var form = new FormStoresLoad();
             form.ShowDialog();
         }
 
         private void заказыКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormDesignerRequest>();
+            var form = new FormDesignerRequest();
             form.ShowDialog();
         }
     }

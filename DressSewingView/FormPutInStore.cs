@@ -10,34 +10,21 @@ using System.Windows.Forms;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
-using Unity;
 
 namespace DressSewingView
 {
 	public partial class FormPutInStore : Form
 	{
-		[Dependency]
-		public new IUnityContainer Container { get; set; }
-
-		private readonly IStoreService serviceS;
-
-		private readonly IMaterialService serviceC;
-
-		private readonly IMainService serviceM;
-
-		public FormPutInStore(IStoreService serviceS, IMaterialService serviceC, IMainService serviceM)
+		public FormPutInStore()
 		{
 			InitializeComponent();
-			this.serviceS = serviceS;
-			this.serviceC = serviceC;
-			this.serviceM = serviceM;
 		}
 
 		private void FormPutInStore_Load(object sender, EventArgs e)
 		{
 			try
 			{
-				List<MaterialViewModel> listC = serviceC.GetList();
+                List<MaterialViewModel> listC = APIClient.GetRequest<List<MaterialViewModel>>("api/Material/GetList");
 				if (listC != null)
 				{
 					comboBoxMaterial.DisplayMember = "MaterialName";
@@ -45,7 +32,7 @@ namespace DressSewingView
 					comboBoxMaterial.DataSource = listC;
 					comboBoxMaterial.SelectedItem = null;
 				}
-				List<StoreViewModel> listS = serviceS.GetList();
+                List<StoreViewModel> listS = APIClient.GetRequest<List<StoreViewModel>>("api/Store/GetList");
 				if (listS != null)
 				{
 					comboBoxStore.DisplayMember = "StoreName";
@@ -83,7 +70,7 @@ namespace DressSewingView
 			}
 			try
 			{
-				serviceM.PutMaterialInStore(new StoreMaterialBindingModel
+                APIClient.PostRequest<StoreMaterialBindingModel, bool>("api/Main/PutMaterialInStore", new StoreMaterialBindingModel
 				{
 					MaterialId = Convert.ToInt32(comboBoxMaterial.SelectedValue),
 					StoreId = Convert.ToInt32(comboBoxStore.SelectedValue),

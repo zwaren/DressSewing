@@ -10,25 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
 
 namespace DressSewingView
 {
     public partial class FormMaterrial : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int Id { set { id = value; } }
-
-        private readonly IMaterialService service;
 
         private int? id;
 
-        public FormMaterrial(IMaterialService service)
+        public FormMaterrial()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -43,7 +36,7 @@ namespace DressSewingView
             {
                 if (id.HasValue)
                 {
-                    service.UpdElement(new MaterialBindingModel
+                    APIClient.PostRequest<MaterialBindingModel, bool>("api/Material/UpdElement", new MaterialBindingModel
                     {
                         Id = id.Value,
                         MaterialName = textBoxName.Text
@@ -51,20 +44,18 @@ namespace DressSewingView
                 }
                 else
                 {
-                    service.AddElement(new MaterialBindingModel
+                    APIClient.PostRequest<MaterialBindingModel, bool>("api/Material/AddElement", new MaterialBindingModel
                     {
                         MaterialName = textBoxName.Text
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -74,13 +65,13 @@ namespace DressSewingView
             Close();
         }
 
-        private void FormDesigner_Load(object sender, EventArgs e)
+        private void FormMaterial_Load(object sender, EventArgs e)
         {
             if (id.HasValue)
             {
                 try
                 {
-                    MaterialViewModel view = service.GetElement(id.Value);
+                    MaterialViewModel view = APIClient.GetRequest<MaterialViewModel>("api/Material/Get/" + id.Value);
                     if (view != null)
                     {
                         textBoxName.Text = view.MaterialName;
