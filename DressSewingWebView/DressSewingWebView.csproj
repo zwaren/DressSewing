@@ -138,7 +138,10 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\DesignersController.cs" />
+    <Compile Include="Controllers\DressesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\MaterialsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +190,15 @@
     <Content Include="Views\Designers\Index.cshtml" />
     <Content Include="Views\Designers\Create.cshtml" />
     <Content Include="Views\Designers\Edit.cshtml" />
+    <Content Include="Views\Materials\Index.cshtml" />
+    <Content Include="Views\Materials\Edit.cshtml" />
+    <Content Include="Views\Materials\Create.cshtml" />
+    <Content Include="Views\Dresses\Index.cshtml" />
+    <Content Include="Views\Dresses\Edit.cshtml" />
+    <Content Include="Views\Dresses\Create.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\Main\Create.cshtml" />
+    <Content Include="Views\Dresses\AddMaterial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
