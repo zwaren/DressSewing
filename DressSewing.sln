@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingServiceImplement
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingView", "DressSewingView\DressSewingView.csproj", "{D6C585E8-A658-4AEB-B808-CA068036F1EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DressSewingWebView", "DressSewingWebView\DressSewingWebView.csproj", "{E3547E95-5010-43E9-9704-2648C70CF09A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D6C585E8-A658-4AEB-B808-CA068036F1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6C585E8-A658-4AEB-B808-CA068036F1EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6C585E8-A658-4AEB-B808-CA068036F1EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3547E95-5010-43E9-9704-2648C70CF09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3547E95-5010-43E9-9704-2648C70CF09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3547E95-5010-43E9-9704-2648C70CF09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3547E95-5010-43E9-9704-2648C70CF09A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
