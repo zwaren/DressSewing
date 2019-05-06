@@ -79,7 +79,9 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 Count = rec.Count,
                 Sum = rec.Sum,
                 DesignerFIO = rec.Designer.DesignerFIO,
-                DressName = rec.Dress.DressName
+                DressName = rec.Dress.DressName,
+                TailorId = rec.Tailor.Id,
+                TailorName = rec.Tailor.TailorFIO
             })
             .ToList();
             return result;
@@ -162,6 +164,8 @@ namespace DressSewingServiceImplementDataBase.Implementations
                             throw new Exception("Не достаточно компонента " + dressMaterial.Material.MaterialName + " требуется " + dressMaterial.Count + ", не хватает " + countOnStores);
                         }
                     }
+                    element.TailorId = model.TailorId;
+                    //element.Tailor = context.Tailors.First(rec => rec.Id == model.TailorId);
                     element.DateImplement = DateTime.Now;
                     element.Status = RequestStatus.Выполняется;
                     context.SaveChanges();

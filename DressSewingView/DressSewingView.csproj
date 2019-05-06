@@ -280,6 +280,7 @@
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductComponentViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.RequestViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.StoreMaterialViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.StoreViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.TailorViewModel.datasource" />
