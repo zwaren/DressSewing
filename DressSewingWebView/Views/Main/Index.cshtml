@@ -71,8 +71,9 @@
             @Html.DisplayFor(modelItem => item.DateImplement)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Отдать на выполнение", "SetStatus", new { id = item.Id, status = "Processing" }) |
+            @Html.ActionLink("Заказ готов", "SetStatus", new { id = item.Id, status = "Ready" }) |
+            @Html.ActionLink("Заказ оплачен", "SetStatus", new { id = item.Id, status = "Paid" })
         </td>
     </tr>
 }
