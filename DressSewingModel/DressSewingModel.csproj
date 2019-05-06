@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Designer.cs" />
     <Compile Include="Material.cs" />
+    <Compile Include="MessageInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="RequestStatus.cs" />
     <Compile Include="Dress.cs" />

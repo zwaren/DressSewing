@@ -15,6 +15,8 @@ namespace DressSewingModel
         [Required]
         public string DesignerFIO { get; set; }
 
+        public string Mail { get; set; }
+
         [ForeignKey("DesignerId")]
         public virtual List<Request> Requests { get; set; }
     }

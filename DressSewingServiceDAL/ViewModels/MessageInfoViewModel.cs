@@ -8,18 +8,21 @@ using System.Threading.Tasks;
 namespace DressSewingServiceDAL.ViewModels
 {
     [DataContract]
-    public class DesignerViewModel
+    public class MessageInfoViewModel
     {
         [DataMember]
-        public int Id { get; set; }
+        public string MessageId { get; set; }
 
         [DataMember]
-        public string Mail { get; set; }
+        public string DesignerName { get; set; }
 
         [DataMember]
-        public string DesignerFIO { get; set; }
+        public DateTime DateDelivery { get; set; }
 
         [DataMember]
-        public List<MessageInfoViewModel> Messages { get; set; }
+        public string Subject { get; set; }
+
+        [DataMember]
+        public string Body { get; set; }
     }
 }

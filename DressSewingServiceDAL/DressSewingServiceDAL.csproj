@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BindingModels\DesignerBindingModel.cs" />
     <Compile Include="BindingModels\MaterialBindingModel.cs" />
+    <Compile Include="BindingModels\MessageInfoBindingModel.cs" />
     <Compile Include="BindingModels\ReportBindingModel.cs" />
     <Compile Include="BindingModels\RequestBindingModel.cs" />
     <Compile Include="BindingModels\DressBindingModel.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Interfaces\IMaterialService.cs" />
     <Compile Include="Interfaces\IMainService.cs" />
     <Compile Include="Interfaces\IDressService.cs" />
+    <Compile Include="Interfaces\IMessageInfoService.cs" />
     <Compile Include="Interfaces\IReportService.cs" />
     <Compile Include="Interfaces\IStoreService.cs" />
     <Compile Include="Interfaces\ITailorService.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="ViewModels\DesignerRequestsModel.cs" />
     <Compile Include="ViewModels\DesignerViewModel.cs" />
     <Compile Include="ViewModels\MaterialViewModel.cs" />
+    <Compile Include="ViewModels\MessageInfoViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="ViewModels\DressMaterialViewModel.cs" />
     <Compile Include="ViewModels\DressViewModel.cs" />
