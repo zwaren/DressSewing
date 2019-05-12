@@ -19,5 +19,8 @@ namespace DressSewingModel
 
         [ForeignKey("DesignerId")]
         public virtual List<Request> Requests { get; set; }
+
+        [ForeignKey("DesignerId")]
+        public virtual List<MessageInfo> MessageInfos { get; set; }
     }
 }

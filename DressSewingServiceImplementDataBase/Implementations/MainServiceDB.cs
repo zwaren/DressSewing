@@ -134,9 +134,9 @@ namespace DressSewingServiceImplementDataBase.Implementations
         {
             using (var transaction = context.Database.BeginTransaction())
             {
+                Request element = context.Requests.FirstOrDefault(rec => rec.Id == model.Id);
                 try
                 {
-                    Request element = context.Requests.FirstOrDefault(rec => rec.Id == model.Id);
                     if (element == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -178,11 +178,15 @@ namespace DressSewingServiceImplementDataBase.Implementations
                     element.DateImplement = DateTime.Now;
                     element.Status = RequestStatus.Выполняется;
                     context.SaveChanges();
+                    SendEmail(element.Designer.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} передеан в работу", element.Id, element.DateCreate.ToShortDateString()));
                     transaction.Commit();
                 }
                 catch (Exception)
                 {
                     transaction.Rollback();
+                    element.Status = RequestStatus.НедостаточноРесурсов;
+                    context.SaveChanges();
+                    transaction.Commit();
                     throw;
                 }
             }
