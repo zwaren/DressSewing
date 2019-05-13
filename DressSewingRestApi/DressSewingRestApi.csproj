@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Servises\ReflectionService.cs" />
     <Compile Include="Servises\WorkTailor.cs" />
   </ItemGroup>
   <ItemGroup>

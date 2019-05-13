@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributies\CustomInterfaceAttribute.cs" />
+    <Compile Include="Attributies\CustomMethodAttribute.cs" />
     <Compile Include="BindingModels\DesignerBindingModel.cs" />
     <Compile Include="BindingModels\MaterialBindingModel.cs" />
     <Compile Include="BindingModels\MessageInfoBindingModel.cs" />
