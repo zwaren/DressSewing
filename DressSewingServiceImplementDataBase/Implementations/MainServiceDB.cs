@@ -174,7 +174,6 @@ namespace DressSewingServiceImplementDataBase.Implementations
                         }
                     }
                     element.TailorId = model.TailorId;
-                    //element.Tailor = context.Tailors.First(rec => rec.Id == model.TailorId);
                     element.DateImplement = DateTime.Now;
                     element.Status = RequestStatus.Выполняется;
                     context.SaveChanges();
