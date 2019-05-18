@@ -49,6 +49,18 @@ namespace DressSewingServiceImplementDataBase.Implementations
             context.SaveChanges();
         }
 
+        public List<RequestViewModel> GetFreeRequests()
+        {
+            List<RequestViewModel> result = context.Requests
+                .Where(x => x.Status == RequestStatus.Принят || x.Status == RequestStatus.НедостаточноРесурсов)
+                .Select(rec => new RequestViewModel
+                {
+                    Id = rec.Id
+                })
+                .ToList();
+            return result;
+        }
+
         public List<RequestViewModel> GetList()
         {
             List<RequestViewModel> result = context.Requests.Select(rec => new RequestViewModel
@@ -67,7 +79,9 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 Count = rec.Count,
                 Sum = rec.Sum,
                 DesignerFIO = rec.Designer.DesignerFIO,
-                DressName = rec.Dress.DressName
+                DressName = rec.Dress.DressName,
+                TailorId = rec.Tailor.Id,
+                TailorName = rec.Tailor.TailorFIO
             })
             .ToList();
             return result;
@@ -150,6 +164,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
                             throw new Exception("Не достаточно компонента " + dressMaterial.Material.MaterialName + " требуется " + dressMaterial.Count + ", не хватает " + countOnStores);
                         }
                     }
+                    element.TailorId = model.TailorId;
                     element.DateImplement = DateTime.Now;
                     element.Status = RequestStatus.Выполняется;
                     context.SaveChanges();

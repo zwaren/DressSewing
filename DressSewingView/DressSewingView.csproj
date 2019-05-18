@@ -191,6 +191,18 @@
     <Compile Include="FormStoresLoad.Designer.cs">
       <DependentUpon>FormStoresLoad.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTailor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTailor.Designer.cs">
+      <DependentUpon>FormTailor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTailors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTailors.Designer.cs">
+      <DependentUpon>FormTailors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDesigner.resx">
@@ -241,6 +253,12 @@
     <EmbeddedResource Include="FormStoresLoad.resx">
       <DependentUpon>FormStoresLoad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormTailor.resx">
+      <DependentUpon>FormTailor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTailors.resx">
+      <DependentUpon>FormTailors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -262,8 +280,10 @@
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductComponentViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.RequestViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.StoreMaterialViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.StoreViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.TailorViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

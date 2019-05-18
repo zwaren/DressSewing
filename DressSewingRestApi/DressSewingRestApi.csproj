@@ -116,11 +116,13 @@
     <Compile Include="Controllers\MaterialController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\TailorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Servises\WorkTailor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

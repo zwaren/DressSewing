@@ -31,7 +31,7 @@ namespace DressSewingView
 			{
 				try
 				{
-                    DressViewModel view = APIClient.GetRequest<DressViewModel>("api/Designer/Get/" + id.Value);
+                    DressViewModel view = APIClient.GetRequest<DressViewModel>("api/Dress/Get/" + id.Value);
 					if (view != null)
 					{
 						textBoxName.Text = view.DressName;

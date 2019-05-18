@@ -66,9 +66,14 @@
     <Compile Include="Implementations\MaterialServiceDB.cs" />
     <Compile Include="Implementations\ReportServiceDB.cs" />
     <Compile Include="Implementations\StoreServiceDB.cs" />
+    <Compile Include="Implementations\TailorServiceDB.cs" />
     <Compile Include="Migrations\201903131359154_FirstMigration.cs" />
     <Compile Include="Migrations\201903131359154_FirstMigration.Designer.cs">
       <DependentUpon>201903131359154_FirstMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904201002417_SecondMigration_v2.cs" />
+    <Compile Include="Migrations\201904201002417_SecondMigration_v2.Designer.cs">
+      <DependentUpon>201904201002417_SecondMigration_v2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903131359154_FirstMigration.resx">
       <DependentUpon>201903131359154_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904201002417_SecondMigration_v2.resx">
+      <DependentUpon>201904201002417_SecondMigration_v2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

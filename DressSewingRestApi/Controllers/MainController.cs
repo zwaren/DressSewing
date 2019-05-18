@@ -4,8 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DressSewingRestApi.Servises;
 using DressSewingServiceDAL.BindingModels;
 using DressSewingServiceDAL.Interfaces;
+using DressSewingServiceDAL.ViewModels;
 
 namespace DressSewingRestApi.Controllers
 {
@@ -13,9 +15,12 @@ namespace DressSewingRestApi.Controllers
     {
 		private readonly IMainService _service;
 
-		public MainController(IMainService service)
+        private readonly ITailorService _serviceTailor;
+
+        public MainController(IMainService service, ITailorService serviceTailor)
 		{
 			_service = service;
+            _serviceTailor = serviceTailor;
 		}
 
 		[HttpGet]
@@ -58,5 +63,20 @@ namespace DressSewingRestApi.Controllers
 		{
 			_service.PutMaterialInStore(model);
 		}
-	}
+
+        [HttpPost]
+        public void StartWork()
+        {
+            List<RequestViewModel> requests = _service.GetFreeRequests();
+            foreach (var request in requests)
+            {
+                TailorViewModel impl = _serviceTailor.GetFreeWorker();
+                if (impl == null)
+                {
+                    throw new Exception("Нет сотрудников");
+                }
+                new WorkTailor(_service, _serviceTailor, impl.Id, request.Id);
+            }
+        }
+    }
 }

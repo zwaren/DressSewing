@@ -14,6 +14,8 @@ namespace DressSewingModel
 
         public int DressId { get; set; }
 
+        public int? TailorId { get; set; }
+
         public int Count { get; set; }
 
         public decimal Sum { get; set; }
@@ -27,5 +29,7 @@ namespace DressSewingModel
         public virtual Designer Designer { get; set; }
 
         public virtual Dress Dress { get; set; }
+
+        public virtual Tailor Tailor { get; set; }
     }
 }

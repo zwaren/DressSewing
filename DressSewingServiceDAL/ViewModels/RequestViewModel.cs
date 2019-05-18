@@ -26,6 +26,12 @@ namespace DressSewingServiceDAL.ViewModels
         public string DressName { get; set; }
 
         [DataMember]
+        public int? TailorId { get; set; }
+
+        [DataMember]
+        public string TailorName { get; set; }
+
+        [DataMember]
         public int Count { get; set; }
 
         [DataMember]

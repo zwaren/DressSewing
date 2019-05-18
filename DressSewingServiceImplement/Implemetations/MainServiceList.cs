@@ -152,5 +152,10 @@ namespace DressSewingServiceImplement.Implemetations
                 });
             }
         }
+
+        public List<RequestViewModel> GetFreeRequests()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
