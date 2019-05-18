@@ -137,6 +137,12 @@
     <Compile Include="FormDresses.Designer.cs">
       <DependentUpon>FormDresses.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMails.Designer.cs">
+      <DependentUpon>FormMails.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,7 @@
     <Compile Include="FormTailors.Designer.cs">
       <DependentUpon>FormTailors.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDesigner.resx">
@@ -222,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDresses.resx">
       <DependentUpon>FormDresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMails.resx">
+      <DependentUpon>FormMails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -277,6 +287,7 @@
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressMaterialViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.DressViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.MaterialViewModel.datasource" />
+    <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.MessageInfoViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.OrderViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductComponentViewModel.datasource" />
     <None Include="Properties\DataSources\DressSewingServiceDAL.ViewModels.ProductViewModel.datasource" />

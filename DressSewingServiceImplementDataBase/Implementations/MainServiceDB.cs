@@ -4,8 +4,11 @@ using DressSewingServiceDAL.Interfaces;
 using DressSewingServiceDAL.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity.SqlServer;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +25,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
 
         public void CreateRequest(RequestBindingModel model)
         {
-            context.Requests.Add(new Request
+            var request = new Request
             {
                 DesignerId = model.DesignerId,
                 DressId = model.DressId,
@@ -30,8 +33,12 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 Count = model.Count,
                 Sum = model.Sum,
                 Status = RequestStatus.Принят
-            });
+            };
+            context.Requests.Add(request);
             context.SaveChanges();
+
+            var designer = context.Designers.FirstOrDefault(x => x.Id == model.DesignerId);
+            SendEmail(designer.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} создан успешно", request.Id, request.DateCreate.ToShortDateString()));
         }
 
         public void FinishRequest(RequestBindingModel model)
@@ -47,6 +54,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
             }
             element.Status = RequestStatus.Готов;
             context.SaveChanges();
+            SendEmail(element.Designer.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} передан на оплату", element.Id, element.DateCreate.ToShortDateString()));
         }
 
         public List<RequestViewModel> GetFreeRequests()
@@ -100,6 +108,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
             }
             element.Status = RequestStatus.Оплачен;
             context.SaveChanges();
+            SendEmail(element.Designer.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} оплачен успешно", element.Id, element.DateCreate.ToShortDateString()));
         }
 
         public void PutMaterialInStore(StoreMaterialBindingModel model)
@@ -125,9 +134,9 @@ namespace DressSewingServiceImplementDataBase.Implementations
         {
             using (var transaction = context.Database.BeginTransaction())
             {
+                Request element = context.Requests.FirstOrDefault(rec => rec.Id == model.Id);
                 try
                 {
-                    Request element = context.Requests.FirstOrDefault(rec => rec.Id == model.Id);
                     if (element == null)
                     {
                         throw new Exception("Элемент не найден");
@@ -168,13 +177,47 @@ namespace DressSewingServiceImplementDataBase.Implementations
                     element.DateImplement = DateTime.Now;
                     element.Status = RequestStatus.Выполняется;
                     context.SaveChanges();
+                    SendEmail(element.Designer.Mail, "Оповещение по заказам", string.Format("Заказ №{0} от {1} передеан в работу", element.Id, element.DateCreate.ToShortDateString()));
                     transaction.Commit();
                 }
                 catch (Exception)
                 {
                     transaction.Rollback();
+                    element.Status = RequestStatus.НедостаточноРесурсов;
+                    context.SaveChanges();
+                    transaction.Commit();
                     throw;
                 }
+            }
+        }
+
+        private void SendEmail(string mailAddress, string subject, string text)
+        {
+            MailMessage objMailMessage = new MailMessage();
+            SmtpClient objSmtpClient = null;
+            try
+            {
+                objMailMessage.From = new MailAddress(ConfigurationManager.AppSettings["MailLogin"]);
+                objMailMessage.To.Add(new MailAddress(mailAddress));
+                objMailMessage.Subject = subject;
+                objMailMessage.Body = text;
+                objMailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
+                objMailMessage.BodyEncoding = System.Text.Encoding.UTF8;
+                objSmtpClient = new SmtpClient("smtp.gmail.com", 587);
+                objSmtpClient.UseDefaultCredentials = false;
+                objSmtpClient.EnableSsl = true;
+                objSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                objSmtpClient.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["MailLogin"], ConfigurationManager.AppSettings["MailPassword"]);
+                objSmtpClient.Send(objMailMessage);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objMailMessage = null;
+                objSmtpClient = null;
             }
         }
     }

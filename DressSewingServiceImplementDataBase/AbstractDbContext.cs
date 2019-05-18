@@ -25,5 +25,6 @@ namespace DressSewingServiceImplementDataBase
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<StoreMaterial> StoreMaterials { get; set; }
         public virtual DbSet<Tailor> Tailors { get; set; }
+        public virtual DbSet<MessageInfo> MessageInfos { get; set; }
     }
 }

@@ -28,7 +28,8 @@ namespace DressSewingServiceImplementDataBase.Implementations
             }
             context.Designers.Add(new Designer
             {
-                DesignerFIO = model.DesignerFIO
+                DesignerFIO = model.DesignerFIO,
+                Mail = model.Mail
             });
             context.SaveChanges();
         }
@@ -55,7 +56,18 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 return new DesignerViewModel
                 {
                     Id = element.Id,
-                    DesignerFIO = element.DesignerFIO
+                    DesignerFIO = element.DesignerFIO,
+                    Mail = element.Mail,
+                    Messages = context.MessageInfos
+                        .Where(recM => recM.DesignerId == element.Id)
+                        .Select(recM => new MessageInfoViewModel
+                        {
+                            MessageId = recM.MessageId,
+                            DateDelivery = recM.DateDelivery,
+                            Subject = recM.Subject,
+                            Body = recM.Body
+                        })
+                        .ToList()
                 };
             }
             throw new Exception("Элемент не найден");
@@ -66,7 +78,8 @@ namespace DressSewingServiceImplementDataBase.Implementations
             List<DesignerViewModel> result = context.Designers.Select(rec => new DesignerViewModel
             {
                 Id = rec.Id,
-                DesignerFIO = rec.DesignerFIO
+                DesignerFIO = rec.DesignerFIO,
+                Mail = rec.Mail
             })
             .ToList();
             return result;
@@ -85,6 +98,7 @@ namespace DressSewingServiceImplementDataBase.Implementations
                 throw new Exception("Элемент не найден");
             }
             element.DesignerFIO = model.DesignerFIO;
+            element.Mail = model.Mail;
             context.SaveChanges();
         }
     }
