@@ -15,5 +15,6 @@ namespace DressSewingServiceDAL.Interfaces
         void TakeRequestInWork(RequestBindingModel model);
         void FinishRequest(RequestBindingModel model);
         void PayRequest(RequestBindingModel model);
+        void PutMaterialInStore(StoreMaterialBindingModel model);
     }
 }

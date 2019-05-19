@@ -48,6 +48,8 @@
     <Compile Include="Dress.cs" />
     <Compile Include="DressMaterial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreMaterial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

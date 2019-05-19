@@ -43,6 +43,7 @@ namespace DressSewingWebView
             container.RegisterType<IMaterialService, MaterialServiceList>(new HierarchicalLifetimeManager());
             container.RegisterType<IDesignerService, DesignerServiceList>(new HierarchicalLifetimeManager());
             container.RegisterType<IMainService, MainServiceList>(new HierarchicalLifetimeManager());
+            container.RegisterType<IStoreService, StoreServiceList>(new HierarchicalLifetimeManager());
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();

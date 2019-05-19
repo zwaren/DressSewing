@@ -46,16 +46,21 @@
     <Compile Include="BindingModels\RequestBindingModel.cs" />
     <Compile Include="BindingModels\DressBindingModel.cs" />
     <Compile Include="BindingModels\DressMaterialBindingModel.cs" />
+    <Compile Include="BindingModels\StoreBindingModel.cs" />
+    <Compile Include="BindingModels\StoreMaterialBindingModel.cs" />
     <Compile Include="Interfaces\IDesignerService.cs" />
     <Compile Include="Interfaces\IMaterialService.cs" />
     <Compile Include="Interfaces\IMainService.cs" />
     <Compile Include="Interfaces\IDressService.cs" />
+    <Compile Include="Interfaces\IStoreService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DesignerViewModel.cs" />
     <Compile Include="ViewModels\MaterialViewModel.cs" />
     <Compile Include="ViewModels\RequestViewModel.cs" />
     <Compile Include="ViewModels\DressMaterialViewModel.cs" />
     <Compile Include="ViewModels\DressViewModel.cs" />
+    <Compile Include="ViewModels\StoreMaterialViewModel.cs" />
+    <Compile Include="ViewModels\StoreViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DressSewingModel\DressSewingModel.csproj">
