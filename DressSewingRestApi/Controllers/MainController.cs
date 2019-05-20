@@ -78,5 +78,17 @@ namespace DressSewingRestApi.Controllers
                 new WorkTailor(_service, _serviceTailor, impl.Id, request.Id);
             }
         }
+
+        [HttpGet]
+        public IHttpActionResult GetInfo()
+        {
+            ReflectionService service = new ReflectionService();
+            var list = service.GetInfoByAssembly();
+            if (list == null)
+            {
+                InternalServerError(new Exception("Нет данных"));
+            }
+            return Ok(list);
+        }
     }
 }
