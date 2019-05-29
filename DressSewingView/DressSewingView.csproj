@@ -55,7 +55,14 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
@@ -238,6 +245,10 @@
     <ProjectReference Include="..\DressSewingServiceDAL\DressSewingServiceDAL.csproj">
       <Project>{2C60FF58-7E7C-44A2-AD42-442A02D2ED11}</Project>
       <Name>DressSewingServiceDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DressSewingServiceImplementDataBase\DressSewingServiceImplementDataBase.csproj">
+      <Project>{AD780E80-8EE5-4F33-AC32-04459CA98665}</Project>
+      <Name>DressSewingServiceImplementDataBase</Name>
     </ProjectReference>
     <ProjectReference Include="..\DressSewingServiceImplement\DressSewingServiceImplement.csproj">
       <Project>{1CCFC47C-8B01-45E5-8BC1-BAE64667D27C}</Project>
